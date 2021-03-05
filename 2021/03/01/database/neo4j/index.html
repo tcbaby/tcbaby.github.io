@@ -11,21 +11,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>idea - tcbaby&#39;s blog</title>
+<title>neo4j 图数据库 - tcbaby&#39;s blog</title>
 
 
-    <meta name="description" content="idea">
+    <meta name="description" content="图数据库、语法大小写皆可">
 <meta property="og:type" content="article">
-<meta property="og:title" content="idea">
-<meta property="og:url" content="http://tcbaby.github.io/2020/05/01/tools/idea/index.html">
+<meta property="og:title" content="neo4j 图数据库">
+<meta property="og:url" content="http://tcbaby.github.io/2021/03/01/database/neo4j/index.html">
 <meta property="og:site_name" content="tcbaby&#39;s blog">
-<meta property="og:description" content="idea">
+<meta property="og:description" content="图数据库、语法大小写皆可">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://tcbaby.github.io/images/og_image.png">
-<meta property="article:published_time" content="2020-05-01T03:13:12.000Z">
-<meta property="article:modified_time" content="2021-03-05T06:32:37.587Z">
+<meta property="article:published_time" content="2021-03-01T06:23:22.000Z">
+<meta property="article:modified_time" content="2021-03-05T06:32:37.586Z">
 <meta property="article:author" content="tcbaby">
-<meta property="article:tag" content="Git">
+<meta property="article:tag" content="database">
+<meta property="article:tag" content="neo4j">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://tcbaby.github.io/images/og_image.png">
 
@@ -85,7 +86,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/hub.png" alt="idea" height="28">
+                <img src="/images/hub.png" alt="neo4j 图数据库" height="28">
             
             </a>
         </div>
@@ -144,15 +145,15 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>idea
+                <i class="fas fa-angle-double-right"></i>neo4j 图数据库
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-01T03:13:12.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-01</time>
+                <time class="level-item has-text-grey" datetime="2021-03-01T06:23:22.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2021-03-01</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2021-03-05T06:32:37.587Z"><i class="far fa-calendar-check">&nbsp;</i>2021-03-05</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2021-03-05T06:32:37.586Z"><i class="far fa-calendar-check">&nbsp;</i>2021-03-05</time>
                 
                 
                 <div class="level-item">
@@ -165,7 +166,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    2 分钟 读完 (大约 363 个字)
+                    2 分钟 读完 (大约 278 个字)
                 </span>
                 
                 
@@ -178,149 +179,30 @@
         </div>
         
         <div class="content">
-            <p>idea</p>
+            <p>图数据库、语法大小写皆可</p>
 <a id="more"></a>
 
-<h2 id="idea快捷键"><a href="#idea快捷键" class="headerlink" title="idea快捷键"></a>idea快捷键</h2><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Ctrl + Alt + Ins</td>
-<td>新建…</td>
-</tr>
-<tr>
-<td>Alt+Enter</td>
-<td>导入包，自动修正代码</td>
-</tr>
-<tr>
-<td>Alt+Ins</td>
-<td>自动生成代码，toString，get，set等方法</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+L</td>
-<td>格式化代码</td>
-</tr>
-<tr>
-<td>Ctrl+/</td>
-<td>单行注释</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+/</td>
-<td>选中代码注释，多行注释，再按取消注释</td>
-</tr>
-<tr>
-<td>Ctrl+Y</td>
-<td>删除光标所在行</td>
-</tr>
-<tr>
-<td>Ctrl+D</td>
-<td>复制光标所在行的内容，插入光标位置下面</td>
-</tr>
-<tr>
-<td>Alt+Shift+上下箭头</td>
-<td>移动当前代码行</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + V  / .var</td>
-<td>补全等号左边的变量定义</td>
-</tr>
-<tr>
-<td>shift + f6</td>
-<td>重构</td>
-</tr>
-<tr>
-<td>ctrl+w选中变量, alt+j选中下面同名变量</td>
-<td>批量修改变量名</td>
-</tr>
-<tr>
-<td>fori  / obj.for</td>
-<td>for / foreach</td>
-</tr>
-<tr>
-<td>Shift + alt + t</td>
-<td>代码块。。。</td>
-</tr>
-<tr>
-<td>ctrl + alt + m</td>
-<td>将代码块抽取为一个新函数</td>
-</tr>
-<tr>
-<td>Ctrl + R [+Shift]</td>
-<td>[全局]替换  {Match Case, Words, Regex}</td>
-</tr>
-<tr>
-<td>Ctrl + f [+Shift]</td>
-<td>[全局]查找</td>
-</tr>
-<tr>
-<td>Ctrl + p</td>
-<td>提示函数参数相关信息</td>
-</tr>
-<tr>
-<td>Ctrl + q</td>
-<td>quick javadoc</td>
-</tr>
-<tr>
-<td>Ctrl + [ / ]</td>
-<td>move code block start/end</td>
-</tr>
-<tr>
-<td>Ctrl + N / Ctrl + shift + N / 2 shift</td>
-<td>搜索类/文件/所有</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + B</td>
-<td>跳转到方法体中</td>
-</tr>
-<tr>
-<td>ctrl + f12 / Alt + 7</td>
-<td>查看类的所有成员</td>
-</tr>
-<tr>
-<td>ctrl + h / Alt + 8</td>
-<td>查看类/接口的继承/实现关系</td>
-</tr>
-<tr>
-<td>Alt + number</td>
-<td>显示/隐藏组件</td>
-</tr>
-<tr>
-<td>ctrl + shift + space</td>
-<td>智能提示传递的参数</td>
-</tr>
-<tr>
-<td>ctrl+`</td>
-<td>switch mode/theme/…</td>
-</tr>
-</tbody></table>
-<p><strong>修改idea默认快捷键</strong></p>
-<ul>
-<li>Setting -&gt; keyMap –&gt; -&gt; Main menu -&gt;  file/code/edit/….</li>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://www.cnblogs.com/ljhdo/p/5516793.html">https://www.cnblogs.com/ljhdo/p/5516793.html</a></li>
+<li><a href="http://arganzheng.life/neo4j-multiple-labels-index.html">http://arganzheng.life/neo4j-multiple-labels-index.html</a></li>
 </ul>
-<p><strong>改ideaVim与idea快捷键冲突</strong></p>
-<ul>
-<li>Editor -&gt; Vim Emulation</li>
-</ul>
-<h2 id="idea插件"><a href="#idea插件" class="headerlink" title="idea插件"></a>idea插件</h2><ol>
-<li>ideaVIM</li>
-<li>lombok</li>
-<li>alibaba</li>
-<li>translation</li>
-<li>easy code：代码生成</li>
-<li>GsonFormat：格式化json，并转化为实体属性 (Alt + S)</li>
-</ol>
+<h3 id="创建节点"><a href="#创建节点" class="headerlink" title="创建节点"></a>创建节点</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 节点表示: (name:label1:label2 &#123;field: value&#125;)</span></span><br><span class="line">CREATE (Hugo:Person &#123;name:'Hugo Weaving', born:1960&#125;)</span><br><span class="line">create (n:Person &#123; name: 'Tom Hanks', born: 1956 &#125;) return n</span><br><span class="line">CREATE (TheMatrix:Movie &#123;title:'The Matrix', released:1999, tagline:'Welcome to...'&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建关系"><a href="#创建关系" class="headerlink" title="创建关系"></a>创建关系</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 关系表示： (name:label1:label2 &#123;fied, value&#125;), 属性可有可无</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 建立关系 CREATE node1 - [relationship] - node2</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 1. 匹配节点 建立关系</span></span><br><span class="line">MATCH (a:Person),(b:Movie) </span><br><span class="line">where a.name = 'Hugo Weaving' and b.title = 'The Matrix' </span><br><span class="line">create (a) - [r:ACTED_IN &#123;roles:['Agent Smith']&#125;] -&gt; (r)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2. 创建节点并建立关系</span></span><br><span class="line">CREATE (Hugo:Person &#123;&#125;)</span><br><span class="line">CREATE (TheMatrix:Movie &#123;&#125;)</span><br><span class="line">CREATE (Hugo)-[:ACTED_IN &#123;roles:['Agent Smith']&#125;]-&gt;(TheMatrix)</span><br><span class="line"><span class="meta">#</span><span class="bash"> 3. 创建节点并建立关系</span></span><br><span class="line">CREATE (Hugo:Person &#123;&#125;)-[:ACTED_IN &#123;roles:['Agent Smith']&#125;]-&gt;(TheMatrix:Movie &#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="查"><a href="#查" class="headerlink" title="查"></a>查</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查节点</span></span><br><span class="line">MATCH (c:equip &#123;name: 'f35'&#125; ) return c</span><br><span class="line">MATCH (c:equip) where c.name = 'f35' return c</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查关系</span></span><br><span class="line">MATCH p=()-[r:ACTED_IN]-&gt;() RETURN p LIMIT 25</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 关系依赖于节点，删除所有节点关系会自动删除</span></span><br><span class="line">MATCH (n:Person) DETACH DELETE n</span><br><span class="line">MATCH (n) WHERE id(n) = 3869127  DETACH DELETE n</span><br></pre></td></tr></table></figure>
+
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看索引</span></span><br><span class="line">:schema</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 创建索引</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> CREATE INDEX ON :&lt;label&gt;(&lt;field&gt;)</span></span><br><span class="line">CREATE INDEX ON :Person(name)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除索引</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> DROP INDEX ON :&lt;label&gt;(&lt;field&gt;)</span></span><br><span class="line">DROP INDEX ON :Person(name)</span><br></pre></td></tr></table></figure>
 
         </div>
         
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://tcbaby.github.io/2020/05/01/tools/idea/">idea</a></li>
+            <li><strong>本文标题：</strong><a href="http://tcbaby.github.io/2021/03/01/database/neo4j/">neo4j 图数据库</a></li>
             <li><strong>本文作者：</strong><a href="http://tcbaby.github.io">tcbaby</a></li>
-            <li><strong>本文链接：</strong><a href="http://tcbaby.github.io/2020/05/01/tools/idea/">http://tcbaby.github.io/2020/05/01/tools/idea/</a></li>
-            <li><strong>发布时间：</strong>2020-05-01</li>
+            <li><strong>本文链接：</strong><a href="http://tcbaby.github.io/2021/03/01/database/neo4j/">http://tcbaby.github.io/2021/03/01/database/neo4j/</a></li>
+            <li><strong>发布时间：</strong>2021-03-01</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
@@ -331,7 +213,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/Git/" rel="tag">Git</a>
+                    <a class="has-link-grey -link" href="/tags/database/" rel="tag">database</a>,&nbsp;<a class="has-link-grey -link" href="/tags/neo4j/" rel="tag">neo4j</a>
                 </div>
             </div>
         </div>
@@ -378,16 +260,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/01/tools/git/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2021/03/01/database/mongo/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Git的使用</span>
+                <span class="level-item">MongoDB</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/01/Java/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">
-                <span class="level-item">Java文件操作</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2021/03/01/tools/git-svn/">
+                <span class="level-item">使用git管理svn</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -487,13 +369,29 @@
                     目录
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#idea快捷键">
+        <a class="is-flex" href="#参考">
         <span class="has-mr-6">1</span>
-        <span>idea快捷键</span>
+        <span>参考</span>
         </a></li><li>
-        <a class="is-flex" href="#idea插件">
+        <a class="is-flex" href="#创建节点">
         <span class="has-mr-6">2</span>
-        <span>idea插件</span>
+        <span>创建节点</span>
+        </a></li><li>
+        <a class="is-flex" href="#创建关系">
+        <span class="has-mr-6">3</span>
+        <span>创建关系</span>
+        </a></li><li>
+        <a class="is-flex" href="#查">
+        <span class="has-mr-6">4</span>
+        <span>查</span>
+        </a></li><li>
+        <a class="is-flex" href="#删除数据">
+        <span class="has-mr-6">5</span>
+        <span>删除数据</span>
+        </a></li><li>
+        <a class="is-flex" href="#索引">
+        <span class="has-mr-6">6</span>
+        <span>索引</span>
         </a></li></ul>
             </div>
         </div>
@@ -518,7 +416,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/hub.png" alt="idea" height="28">
+                    <img src="/images/hub.png" alt="neo4j 图数据库" height="28">
                 
                 </a>
                 <p class="is-size-7">
