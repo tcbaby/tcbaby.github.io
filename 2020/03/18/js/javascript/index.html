@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <!-- FiraCode -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@3/distr/fira_code.css">
+    <!-- <link rel="stylesheet" href="/fonts/FiraCode-Regular.ttf"> -->
+    <!-- <link rel="stylesheet" href="/fonts/FiraCode-Retina.ttf"> -->
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>javascript - tcbaby&#39;s blog</title>
+
+
+    <meta name="description" content="ECMAScript：欧洲计算机协会 BOM(broswer object model): 浏览器对象模型， 操作浏览器的方法 DOM(document object model)：文档对象模型， 操作html,css的方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript">
+<meta property="og:url" content="http://tcbaby.github.io/2020/03/18/js/javascript/index.html">
+<meta property="og:site_name" content="tcbaby&#39;s blog">
+<meta property="og:description" content="ECMAScript：欧洲计算机协会 BOM(broswer object model): 浏览器对象模型， 操作浏览器的方法 DOM(document object model)：文档对象模型， 操作html,css的方法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tcbaby.github.io/images/og_image.png">
+<meta property="article:published_time" content="2020-03-18T06:33:22.000Z">
+<meta property="article:modified_time" content="2022-03-22T07:23:36.236Z">
+<meta property="article:author" content="tcbaby">
+<meta property="article:tag" content="js">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tcbaby.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/hub.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/xcode.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/hub.png" alt="javascript" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="My GitHub" href="https://www.github.com/tcbaby">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>javascript
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-18T06:33:22.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-03-18</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2022-03-22T07:23:36.236Z"><i class="far fa-calendar-check">&nbsp;</i>2022-03-22</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/js/">js</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    19 分钟 读完 (大约 2790 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <ol>
+<li>ECMAScript：欧洲计算机协会</li>
+<li>BOM(broswer object model): 浏览器对象模型， 操作浏览器的方法</li>
+<li>DOM(document object model)：文档对象模型， 操作html,css的方法</li>
+</ol>
+<a id="more"></a>
+
+<p><strong>js和html的两种结合方式</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 方法<span class="number">1</span>：在html中编写 --&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;  js代码; &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;!-- 方法2：在html中引用外部js文件 --&gt;</span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">" src="</span><span class="number">1.</span>js<span class="string">"&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>script标签最好放在body标签后。因为html是自上到下解析的，如果将script标签放在head中，而我们js代码需要操作body中html代码的一些数据，就不能操作成功。</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
+<li>定义变量:使用关键字var  </li>
+<li>查看变量的数据类型：typeof()  </li>
+<li>五个原始类型：Undefined、Null、Boolean、Number 和 String  </li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"abc"</span>;        <span class="comment">//string</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">123</span>;          <span class="comment">//number</span></span><br><span class="line"><span class="keyword">var</span> flag = <span class="literal">true</span>;        <span class="comment">//bool</span></span><br><span class="line"><span class="keyword">var</span> v;                  <span class="comment">//undifined,定义变量时没有赋值</span></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();  <span class="comment">//object, 获取对象的引用 ECMA将null设置成了object类型</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><ul>
+<li>js里面不区分整数和小数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line"><span class="keyword">var</span> b = a/<span class="number">1000</span>      <span class="comment">// b = 0.123</span></span><br><span class="line"><span class="keyword">var</span> c = b*<span class="number">1000</span>      <span class="comment">// c = 123</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>字符串的相加和相减的操作</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 = <span class="string">'123'</span>;</span><br><span class="line"><span class="keyword">var</span> s2 = s1 + <span class="number">1</span>;    <span class="comment">// 相加做字符串的连接, s2 = '1231'</span></span><br><span class="line"><span class="keyword">var</span> s3 = s1 - <span class="number">1</span>;    <span class="comment">// 相减会做类型转换(若不能转为number型，则提示NaN，表示不是数字)，然后做减法， s3 = 122</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>== 和 === 作判断的区别</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">'1'</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> c = (a == b)    <span class="comment">// true, '=='只比较值</span></span><br><span class="line"><span class="keyword">var</span> d = (a == b)    <span class="comment">// false, '==='比较值和类型</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>直接向页面输出的语句(变量，html代码)</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.write(<span class="string">"hello world"</span>);      <span class="comment">//打印hello world</span></span><br><span class="line"><span class="built_in">document</span>.wirte(<span class="string">"&lt;hr/&gt;"</span>);            <span class="comment">//打印一条直线</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><blockquote>
+<p>js在预处理阶段会将函数、变量的声明提前</p>
+</blockquote>
+<ul>
+<li>函数的定义<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> 方法名(<span class="params">参数列表</span>) </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法2：匿名函数</span></span><br><span class="line"><span class="keyword">var</span> 方法名 = <span class="function"><span class="keyword">function</span>(<span class="params">参数列表</span>) </span>&#123;</span><br><span class="line">    方法体、返回值;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法3：封闭函数, 一个一开始就执行的不用命名的函数</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;)();		<span class="comment">// 可以在function前加上“~”和“!”来定义匿名函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方式4：动态函数,使用内置对象Function 用的少</span></span><br><span class="line"><span class="keyword">var</span> add = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"参数列表"</span>,<span class="string">"方法体和返回值"</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="全局函数"><a href="#全局函数" class="headerlink" title="全局函数"></a>全局函数</h3><p>不属于任何一个对象，可以直接写名称使用</p>
+<ul>
+<li>alert(str);</li>
+<li>eval(str)： 执行js代码</li>
+<li>encodeURI()：对字符进行编码 </li>
+<li>decodeURI()：对字符进行解码</li>
+<li>encodeURIComponent() 和 decodeURIComponent()</li>
+<li>isNaN():判断当前字符串是否不是数字</li>
+<li>parseInt()：转为数字</li>
+<li>splice():  删除，并添加元素</li>
+</ul>
+<h3 id="函数的重载"><a href="#函数的重载" class="headerlink" title="函数的重载"></a>函数的重载</h3><ul>
+<li>js里面是否存在重载？(面试题目)<br>答：js里面不存在重载, 但是可以通过其他方式模拟重载的效果 （通过aruguments数组来实现）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 2个参数</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">arguments</span>.length == <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">arguments</span>[<span class="number">0</span>]+<span class="built_in">arguments</span>[<span class="number">1</span>];</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="comment">// 3个参数</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">arguments</span>.length == <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">arguments</span>[<span class="number">0</span>]+<span class="built_in">arguments</span>[<span class="number">1</span>]+<span class="built_in">arguments</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">    &#125; </span><br><span class="line">    <span class="comment">// 4个参数</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">arguments</span>.length == <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">arguments</span>[<span class="number">0</span>]+<span class="built_in">arguments</span>[<span class="number">1</span>]+<span class="built_in">arguments</span>[<span class="number">2</span>]+<span class="built_in">arguments</span>[<span class="number">3</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 其他</span></span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用对象"><a href="#常用对象" class="headerlink" title="常用对象"></a>常用对象</h2><h3 id="String对象"><a href="#String对象" class="headerlink" title="String对象"></a>String对象</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建String对象</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"abc"</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> string(<span class="string">"abc"</span>);</span><br><span class="line">	</span><br><span class="line"><span class="comment">// length属性：获取串的长度</span></span><br><span class="line"><span class="keyword">var</span> len = str.length</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>与字符的显示相关的方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bold()</td>
+<td>加粗</td>
+</tr>
+<tr>
+<td>fontcolor()</td>
+<td>设置字符串的颜色</td>
+</tr>
+<tr>
+<td>fontsize()</td>
+<td>设置字体的大小</td>
+</tr>
+<tr>
+<td>link()</td>
+<td>将字符串显示成超链接</td>
+</tr>
+<tr>
+<td>sub()/sup()</td>
+<td>下标和上标</td>
+</tr>
+</tbody></table>
+<ul>
+<li>处理字符串的方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>concat()</td>
+<td>连接字符串</td>
+</tr>
+<tr>
+<td>charAt()</td>
+<td>返回指定指定位置的字符串</td>
+</tr>
+<tr>
+<td>split()</td>
+<td>切分字符串，成数组</td>
+</tr>
+<tr>
+<td>replace(old,new)</td>
+<td>替换字符串</td>
+</tr>
+<tr>
+<td>substr(index, num)</td>
+<td>从第index位开始，截取numb个字符</td>
+</tr>
+<tr>
+<td>substring(start, end)</td>
+<td>从start开始，到end结束，不包括end</td>
+</tr>
+</tbody></table>
+<h3 id="Array对象"><a href="#Array对象" class="headerlink" title="Array对象"></a>Array对象</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建数组</span></span><br><span class="line"><span class="keyword">var</span> arr = [];                   </span><br><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> arr2 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>);        </span><br><span class="line"><span class="keyword">var</span> arr3 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);    </span><br><span class="line"></span><br><span class="line"><span class="comment">// length属性：记录数组的长度</span></span><br><span class="line"><span class="keyword">var</span> len = arr.length;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>concat())： 数组的连接</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = arr1.concat(arr2)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>join()：根据指定的字符分割数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="string">"abc"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(arr13.join(<span class="string">"-"</span>));        <span class="comment">// a-b-c</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>push():向数组末尾添加元素，返回数组的新的长度</p>
+</li>
+</ul>
+<p>如果添加的是一个数组，这个时候把数组当做一个整体字符串添加进去</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>);</span><br><span class="line">arr[<span class="number">0</span>] = <span class="string">"aa"</span>;</span><br><span class="line">arr[<span class="number">1</span>] = <span class="string">"bb"</span>;</span><br><span class="line">arr[<span class="number">2</span>] = <span class="string">"cc"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.write(arr.push(<span class="string">"dd"</span>));     <span class="comment">// 4</span></span><br><span class="line"><span class="built_in">document</span>.write(arr);                <span class="comment">// aabbccdd</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>pop()：删除最后一个元素，返回删除的那个元素</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>);</span><br><span class="line">arr[<span class="number">0</span>] = <span class="string">"aa"</span>;</span><br><span class="line">arr[<span class="number">1</span>] = <span class="string">"bb"</span>;</span><br><span class="line">arr[<span class="number">2</span>] = <span class="string">"cc"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.write(arr.pop());     <span class="comment">// cc</span></span><br><span class="line"><span class="built_in">document</span>.write(arr.length);    <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>reverse():颠倒数组中的元素的顺序,返回颠倒后的数组</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>);</span><br><span class="line">arr[<span class="number">0</span>] = <span class="string">"aa"</span>;</span><br><span class="line">arr[<span class="number">1</span>] = <span class="string">"bb"</span>;</span><br><span class="line">arr[<span class="number">2</span>] = <span class="string">"cc"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.write(arr.reverse());    <span class="comment">// ccbbaa</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Date对象"><a href="#Date对象" class="headerlink" title="Date对象"></a>Date对象</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取当前时间</span></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="built_in">document</span>.write(date.toLocaleString());</span><br><span class="line"></span><br><span class="line"><span class="comment">// getFullYear(): 获取当前的年方法</span></span><br><span class="line">getFullYear()</span><br><span class="line"><span class="built_in">document</span>.write(date.toLocaleString());</span><br><span class="line"></span><br><span class="line"><span class="comment">// getMonth()：获取当前的月,返回的是 0-11月，如果想要得到准确的值，加1</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"month: "</span>+(date.getMonth()+<span class="number">1</span>)));</span><br><span class="line"></span><br><span class="line"><span class="comment">// getDay()：星期,返回的是 (0 ~ 6)</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"week: "</span>+date.getDay());</span><br><span class="line"></span><br><span class="line"><span class="comment">// getDate()：得到当前的天 1-31</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"day: "</span>+date.getDate());</span><br><span class="line"></span><br><span class="line"><span class="comment">// getHours()：获取小时</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"hour: "</span>+date.getHours());</span><br><span class="line"></span><br><span class="line"><span class="comment">// getMinutes()：分钟</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"minute: "</span>+date.getMinutes());</span><br><span class="line"></span><br><span class="line"><span class="comment">// getSeconds(): 秒</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"second: "</span>+date.getSeconds());</span><br><span class="line"></span><br><span class="line"><span class="comment">// getTime(): 返回的是1970 1 1 至今的毫秒数</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Math对象"><a href="#Math对象" class="headerlink" title="Math对象"></a>Math对象</h3><p>Math对象里面的都是静态方法，使用可以直接使用 Math.方法()</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ceil(x): 向上舍人</span><br><span class="line">floor(x)：向下舍人</span><br><span class="line">round(x)：四舍五入</span><br><span class="line">random()：得到随机数（伪随机数）</span><br><span class="line"></span><br><span class="line"><span class="comment">// 得到0-9的随机数</span></span><br><span class="line"><span class="built_in">Math</span>.random()*<span class="number">10</span></span><br><span class="line"><span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*<span class="number">10</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="Reg正则对象"><a href="#Reg正则对象" class="headerlink" title="Reg正则对象"></a>Reg正则对象</h3><ul>
+<li>创建</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"正则表达式"</span>);</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/正则表达式/</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>test(参数)</code>方法: <ul>
+<li>验证指定的字符串是否符合正则定义的规范    </li>
+</ul>
+</li>
+</ul>
+<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><ul>
+<li>对象转Json：JSON.stringify()</li>
+<li>Json转对象：JSON.parse()</li>
+</ul>
+<h2 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h2><blockquote>
+<p>Browser Object Model 浏览器对象模型, 将浏览器的各个组成部分封装成对象。</p>
+</blockquote>
+<ul>
+<li><p>navigator： 获取客户机的信息（浏览器的信息）</p>
+<ul>
+<li>navigator.appName</li>
+<li>document.write(navigator.appName);</li>
+<li>screen: 获取屏幕的信息， screen.width, screen.height</li>
+</ul>
+</li>
+<li><p>location: 请求url地址</p>
+<ul>
+<li>href属性: 获取/设置url地址</li>
+<li>search属性：获取地址的参数部分（url中?及其以后的部分）</li>
+<li>hash属性：获取页面描点/哈希值（url中#及其以后的部分）</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>history：请求的url的历史记录</p>
+<ul>
+<li><p>到访问的上一个页面<br>history.back();<br>history.go(-1);</p>
+</li>
+<li><p>到访问的下一个页面<br>history.forward();<br>history.go(1);</p>
+</li>
+</ul>
+</li>
+<li><p>window: 窗口对象</p>
+<ul>
+<li><p>顶层对象（所用的bom对象都是在window里面操作的）</p>
+</li>
+<li><p>window对象的方法</p>
+<ul>
+<li><p>window.alert() : 页面弹出一个框，显示内容</p>
+</li>
+<li><p>confirm()： 确认框</p>
+<ul>
+<li>var flag = window.confirm(“显示的内容”);</li>
+</ul>
+</li>
+<li><p>prompt()： 输入的对话框</p>
+<ul>
+<li>window.prompt(“please input : “,”0”);</li>
+<li>window.prompt(“在显示的内容”,”输入框里面的默认值”);</li>
+</ul>
+</li>
+<li><p>open() :　打开一个新的窗口</p>
+<ul>
+<li><p>open(“打开的新窗口的地址url”,””,”窗口特征，比如窗口宽度和高度”) </p>
+</li>
+<li><p>window.open(“hello.html”,””,”width=200,height=100”);</p>
+</li>
+</ul>
+</li>
+<li><p>close(): 关闭窗口(浏览器兼容性比较差)</p>
+<ul>
+<li>window.close();</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>做定时器 </p>
+<ul>
+<li><p>setInterval(“js代码”,毫秒数)  1秒=1000毫秒</p>
+<ul>
+<li>每隔指定的时间执行一次js代码</li>
+<li>window.setInterval(“alert(‘123’);”,3000);</li>
+</ul>
+</li>
+<li><p>setTimeout(“js代码”,毫秒数)</p>
+<ul>
+<li>运行指定时间后，执行且仅执行一次js代码</li>
+</ul>
+</li>
+<li><p>clearInterval(): 清除setInterval设置的定时器</p>
+<ul>
+<li>clearInterval(传入setInterval方法的返回值);</li>
+</ul>
+</li>
+<li><p>clearTimeout() : 清除setTimeout设置的定时器</p>
+<ul>
+<li>clearTimeout(传入setTimeout方法的返回值);</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><ul>
+<li><p>概念： Document Object Model 文档对象模型</p>
+<ul>
+<li>将标记语言文档的各个组成部分，封装为对象。</li>
+</ul>
+</li>
+<li><p>可以使用这些对象，对标记语言文档进行CRUD的动态操作</p>
+</li>
+<li><p>W3C DOM 标准被分为 3 个不同的部分：</p>
+<ul>
+<li><p>核心 DOM - 针对任何结构化文档的标准模型</p>
+<ul>
+<li><p>Document：文档对象</p>
+</li>
+<li><p>Element：元素对象</p>
+</li>
+<li><p>Attribute：属性对象</p>
+</li>
+<li><p>Text：文本对象</p>
+</li>
+<li><p>Comment:注释对象</p>
+</li>
+<li><p>Node：节点对象，其他5个的父对象</p>
+</li>
+</ul>
+</li>
+<li><p>XML DOM - 针对 XML 文档的标准模型</p>
+</li>
+<li><p>HTML DOM - 针对 HTML 文档的标准模型</p>
+</li>
+</ul>
+</li>
+<li><p>核心DOM模型：</p>
+<ul>
+<li>Document：文档对象<ol>
+<li>创建(获取)：在html dom模型中可以使用window对象来获取<ol>
+<li>window.document</li>
+<li>document</li>
+</ol>
+</li>
+<li>方法：<ol>
+<li>获取Element对象：<ol>
+<li>getElementById()    ： 根据id属性值获取元素对象。id属性值一般唯一</li>
+<li>getElementsByTagName()：根据元素名称获取元素对象们。返回值是一个数组</li>
+<li>getElementsByClassName():根据Class属性值获取元素对象们。返回值是一个数组</li>
+<li>getElementsByName(): 根据name属性值获取元素对象们。返回值是一个数组</li>
+</ol>
+</li>
+<li>创建其他DOM对象：<ul>
+<li>createAttribute(name)</li>
+<li>createComment()</li>
+<li>createElement()</li>
+<li>createTextNode()</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>属性<ul>
+<li>referrer属性：记录上一个跳转页面的地址（需要服务器环境）</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>Element：元素对象<ol>
+<li>获取/创建：通过document来获取和创建</li>
+<li>方法：<ol>
+<li>removeAttribute()：删除属性</li>
+<li>setAttribute()：设置属性</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Node：节点对象，其他5个的父对象<ul>
+<li>特点：所有dom对象都可以被认为是一个节点</li>
+<li>方法：<ul>
+<li>CRUD dom树：<ul>
+<li>appendChild()：向节点的子节点列表的结尾添加新的子节点。</li>
+<li>removeChild()    ：删除（并返回）当前节点的指定子节点。</li>
+<li>replaceChild()：用新节点替换一个子节点。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>属性：<ul>
+<li>parentNode 返回节点的父节点。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>HTML DOM</p>
+<ol>
+<li>标签体的设置和获取：innerHTML</li>
+<li>使用html元素对象的属性</li>
+<li>控制元素样式<ol>
+<li>使用元素的style属性来设置<ul>
+<li>如：<code>div1.style.fontSize = &quot;20px&quot;;</code></li>
+</ul>
+</li>
+<li>提前定义好类选择器的样式，通过元素的className属性来设置其class属性值。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="事件监听机制"><a href="#事件监听机制" class="headerlink" title="事件监听机制"></a>事件监听机制</h2><ul>
+<li><p>概念：某些组件被执行了某些操作后，触发某些代码的执行。    </p>
+<ul>
+<li>事件：某些操作。如： 单击，双击，键盘按下了，鼠标移动了</li>
+<li>事件源：组件。如： 按钮 文本输入框…</li>
+<li>监听器：代码。</li>
+<li>注册监听：将事件，事件源，监听器结合在一起。 当事件源上发生了某个事件，则触发执行某个监听器代码。</li>
+</ul>
+</li>
+<li><p>常见的事件：</p>
+<ol>
+<li><p>点击事件：</p>
+<ol>
+<li>onclick：单击事件</li>
+<li>ondblclick：双击事件</li>
+</ol>
+</li>
+<li><p>焦点事件</p>
+<ol>
+<li>onblur：失去焦点</li>
+<li>onfocus:元素获得焦点。</li>
+</ol>
+</li>
+<li><p>加载事件：</p>
+<ol>
+<li>onload：一张页面或一幅图像完成加载。</li>
+</ol>
+</li>
+<li><p>鼠标事件：</p>
+<ol>
+<li>onmousedown    鼠标按钮被按下。</li>
+<li>onmouseup    鼠标按键被松开。</li>
+<li>onmousemove    鼠标被移动。</li>
+<li>onmouseover    鼠标移到某元素之上。</li>
+<li>onmouseout    鼠标从某元素移开。</li>
+</ol>
+</li>
+<li><p>键盘事件：</p>
+<ol>
+<li>onkeydown    某个键盘按键被按下。    </li>
+<li>onkeyup        某个键盘按键被松开。</li>
+<li>onkeypress    某个键盘按键被按下并松开。</li>
+</ol>
+</li>
+<li><p>选择和改变</p>
+<ol>
+<li>onchange    域的内容被改变。</li>
+<li>onselect    文本被选中。</li>
+</ol>
+</li>
+<li><p>表单事件：</p>
+<ol>
+<li>onsubmit    确认按钮被点击。</li>
+<li>onreset    重置按钮被点击。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="web本地存储"><a href="#web本地存储" class="headerlink" title="web本地存储"></a>web本地存储</h2><p>html5提供了两种在客户端存储数据的新方法，以前都是用cookie。</p>
+<p>对于不同的网站数据存储于不同的区域，并且一个网站只能访问其自身的数据</p>
+<ul>
+<li>localStorage: 没有时间限制</li>
+<li>sessionStorage:  针对一个session的数据存储</li>
+</ul>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>js提供了localStorage、sessionStorage两个类对象，可以直接调用相关方法即可</p>
+<p>localStorage、sessionStorage存储的数据都是<strong>key-value结构，而且value只能是字符串</strong>。</p>
+<p>相关方法：</p>
+<ul>
+<li>setItem</li>
+<li>getItem</li>
+<li>removeItem</li>
+</ul>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://tcbaby.github.io/2020/03/18/js/javascript/">javascript</a></li>
+            <li><strong>本文作者：</strong><a href="http://tcbaby.github.io">tcbaby</a></li>
+            <li><strong>本文链接：</strong><a href="http://tcbaby.github.io/2020/03/18/js/javascript/">http://tcbaby.github.io/2020/03/18/js/javascript/</a></li>
+            <li><strong>发布时间：</strong>2020-03-18</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/js/" rel="tag">js</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.png" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/30/tools/%E4%BD%BF%E7%94%A8hexo&github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">使用hexo和github搭建个人博客</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/18/js/jquery/">
+                <span class="level-item">JQuery</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: '0MVesHWBYVPevIO52bj7lzha-gzGzoHsz',
+        app_key: 'vXNqehkuCjwju4w3eT6oYs97',
+        placeholder: 'Just Do It...'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-96x96 has-mb-6">
+                        <img class="" src="/images/hub.png" alt="tcbaby">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        tcbaby
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        cbtan@foxmail.com
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Chongqing, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        33
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        5
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        28
+                    </p>
+                </a>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/tcbaby" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content" style="max-height:calc(100vh - 22px);overflow:scroll">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#变量">
+        <span class="has-mr-6">1</span>
+        <span>变量</span>
+        </a></li><li>
+        <a class="is-flex" href="#运算符">
+        <span class="has-mr-6">2</span>
+        <span>运算符</span>
+        </a></li><li>
+        <a class="is-flex" href="#函数">
+        <span class="has-mr-6">3</span>
+        <span>函数</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#全局函数">
+        <span class="has-mr-6">3.1</span>
+        <span>全局函数</span>
+        </a></li><li>
+        <a class="is-flex" href="#函数的重载">
+        <span class="has-mr-6">3.2</span>
+        <span>函数的重载</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#常用对象">
+        <span class="has-mr-6">4</span>
+        <span>常用对象</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#String对象">
+        <span class="has-mr-6">4.1</span>
+        <span>String对象</span>
+        </a></li><li>
+        <a class="is-flex" href="#Array对象">
+        <span class="has-mr-6">4.2</span>
+        <span>Array对象</span>
+        </a></li><li>
+        <a class="is-flex" href="#Date对象">
+        <span class="has-mr-6">4.3</span>
+        <span>Date对象</span>
+        </a></li><li>
+        <a class="is-flex" href="#Math对象">
+        <span class="has-mr-6">4.4</span>
+        <span>Math对象</span>
+        </a></li><li>
+        <a class="is-flex" href="#Reg正则对象">
+        <span class="has-mr-6">4.5</span>
+        <span>Reg正则对象</span>
+        </a></li><li>
+        <a class="is-flex" href="#JSON">
+        <span class="has-mr-6">4.6</span>
+        <span>JSON</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#BOM">
+        <span class="has-mr-6">5</span>
+        <span>BOM</span>
+        </a></li><li>
+        <a class="is-flex" href="#DOM">
+        <span class="has-mr-6">6</span>
+        <span>DOM</span>
+        </a></li><li>
+        <a class="is-flex" href="#事件监听机制">
+        <span class="has-mr-6">7</span>
+        <span>事件监听机制</span>
+        </a></li><li>
+        <a class="is-flex" href="#web本地存储">
+        <span class="has-mr-6">8</span>
+        <span>web本地存储</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#使用">
+        <span class="has-mr-6">8.1</span>
+        <span>使用</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/hub.png" alt="javascript" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2022 tcbaby&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客&nbsp;
+                <span id="busuanzi_value_site_pv">0</span>次访问
+                </span>
+                
+                </p>
+            </div>
+            <!-- <div class="level-mid">
+                <span id="timeDate">载入天数...</span> &nbsp;
+                <span id="times">载入时分秒...</span>
+            </div> -->
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- <script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("4/29/2020 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站勉强运行了 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script> -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://tcbaby.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

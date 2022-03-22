@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <!-- FiraCode -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@3/distr/fira_code.css">
+    <!-- <link rel="stylesheet" href="/fonts/FiraCode-Regular.ttf"> -->
+    <!-- <link rel="stylesheet" href="/fonts/FiraCode-Retina.ttf"> -->
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>markdown 常用语法 - tcbaby&#39;s blog</title>
+
+
+    <meta name="description" content="markdown 常用语法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="markdown 常用语法">
+<meta property="og:url" content="http://tcbaby.github.io/2018/11/28/tools/markdown/index.html">
+<meta property="og:site_name" content="tcbaby&#39;s blog">
+<meta property="og:description" content="markdown 常用语法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tcbaby.github.io/images/og_image.png">
+<meta property="article:published_time" content="2018-11-28T06:53:43.000Z">
+<meta property="article:modified_time" content="2022-03-22T07:23:36.240Z">
+<meta property="article:author" content="tcbaby">
+<meta property="article:tag" content="markdown">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tcbaby.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/hub.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/xcode.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/hub.png" alt="markdown 常用语法" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="My GitHub" href="https://www.github.com/tcbaby">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>markdown 常用语法
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-11-28T06:53:43.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2018-11-28</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2022-03-22T07:23:36.240Z"><i class="far fa-calendar-check">&nbsp;</i>2022-03-22</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/tools/">tools</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    3 分钟 读完 (大约 384 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>markdown 常用语法</p>
+<a id="more"></a>
+
+<h2 id="1-换行"><a href="#1-换行" class="headerlink" title="1.换行"></a>1.换行</h2><p>两个空格加一个回车</p>
+<h2 id="2-标题"><a href="#2-标题" class="headerlink" title="2.标题"></a>2.标题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p><font color='orange'>效果</font>：</p>
+<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h2 id="3-区块引用"><a href="#3-区块引用" class="headerlink" title="3.区块引用"></a>3.区块引用</h2><p><font color='orange'>例如:</font>：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; hello world </span><br><span class="line">&gt; </span><br><span class="line">&gt;&gt; hello world  </span><br><span class="line">&gt;  </span><br><span class="line">&gt; hello world</span><br></pre></td></tr></table></figure>
+
+<p><font color='orange'>效果</font>：</p>
+<blockquote>
+<p>hello world </p>
+<blockquote>
+<p>hello world  </p>
+</blockquote>
+<p>hello world</p>
+</blockquote>
+<h2 id="4-列表"><a href="#4-列表" class="headerlink" title="4.列表"></a>4.列表</h2><p>无序列表使用 星号、加号 或是 减号作为列表标记<br>有序列表则使用数字接着一个英文句点 </p>
+<p><font color='orange'>例如:</font>：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- hello world  </span><br><span class="line">    1. hello world  </span><br><span class="line">    2. hello world  </span><br><span class="line">- hello world</span><br></pre></td></tr></table></figure>
+
+<p><font color='orange'>效果</font>：</p>
+<ul>
+<li>hello world  <ol>
+<li>hello world  </li>
+<li>hello world  </li>
+</ol>
+</li>
+<li>hello world </li>
+</ul>
+<h2 id="5-行内代码、代码块"><a href="#5-行内代码、代码块" class="headerlink" title="5.行内代码、代码块"></a>5.行内代码、代码块</h2><h3 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">语法：使用一对反引号引起来</span><br><span class="line"></span><br><span class="line">例如：&#96;int a &#x3D; 10&#96;;</span><br></pre></td></tr></table></figure>
+
+<p><font color='orange'>效果</font>： <code>int a = 10</code></p>
+<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p>使用三对反引号、<code>&lt;pre</code>&gt;`标签、tab缩进<br>建立代码块时，建议指名代码语言  </p>
+<p><font color='orange'>例如:</font>：  </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```python</span></span><br><span class="line"><span class="code">print("hello world")</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;font color&#x3D;&#39;orange&#39;&gt;效果&lt;&#x2F;font&gt;：</span><br><span class="line">​&#96;&#96;&#96;python</span><br><span class="line">print(&quot;hello world&quot;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><h3 id="自动链接-超链接"><a href="#自动链接-超链接" class="headerlink" title="自动链接(超链接)"></a>自动链接(超链接)</h3><p>用尖括号包起来， 就会自动转成链接<br>语法是：<code>[链接名称](链接地址)</code></p>
+<p><font color='orange'>例如:</font>：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;www.baidu.com&gt;</span><br><span class="line">[百度](www.baidu.com)</span><br></pre></td></tr></table></figure>
+
+<p><font color='orange'>效果</font>：<br><a href="https://www.baidu.com">https://www.baidu.com</a><br><a href="https://www.baidu.com">百度</a></p>
+<ul>
+<li>也可以先定义链接，然后在其他位置重复使用<ul>
+<li>定义：[链接名称]:链接地址</li>
+<li>使用：[链接名称][]</li>
+</ul>
+</li>
+</ul>
+<p><font color='orange'>例如:</font>：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[百度]:www.baidu.com  </span><br><span class="line">- [百度][]</span><br><span class="line">- [百度][]</span><br></pre></td></tr></table></figure>
+
+<p><font color='orange'>效果:</font>：  </p>
+<ul>
+<li><a href="www.baidu.com">百度</a></li>
+<li><a href="www.baidu.com">百度</a></li>
+</ul>
+<h3 id="图片链接"><a href="#图片链接" class="headerlink" title="图片链接"></a>图片链接</h3><p><font color='orange'>语法</font>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![描述信息](图片链接地址 &quot;可选提示文本&quot;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>##　反斜杆转义</p>
+<p><font color='orange'>例如</font>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\\    反斜线</span><br><span class="line">\&#96;    反引号</span><br><span class="line">\*    星号</span><br><span class="line">\#    井字号</span><br><span class="line">\+    加号</span><br><span class="line">\-    减号</span><br></pre></td></tr></table></figure>
+
+<p><font color='orange'>效果</font>：<br>\　<br>`　<br>*　<br>#　<br>+　<br>-　</p>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://tcbaby.github.io/2018/11/28/tools/markdown/">markdown 常用语法</a></li>
+            <li><strong>本文作者：</strong><a href="http://tcbaby.github.io">tcbaby</a></li>
+            <li><strong>本文链接：</strong><a href="http://tcbaby.github.io/2018/11/28/tools/markdown/">http://tcbaby.github.io/2018/11/28/tools/markdown/</a></li>
+            <li><strong>发布时间：</strong>2018-11-28</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/markdown/" rel="tag">markdown</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.png" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/12/01/tools/vim/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">学习使用vim</span>
+            </a>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: '0MVesHWBYVPevIO52bj7lzha-gzGzoHsz',
+        app_key: 'vXNqehkuCjwju4w3eT6oYs97',
+        placeholder: 'Just Do It...'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-96x96 has-mb-6">
+                        <img class="" src="/images/hub.png" alt="tcbaby">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        tcbaby
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        cbtan@foxmail.com
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Chongqing, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        33
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        5
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        28
+                    </p>
+                </a>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/tcbaby" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content" style="max-height:calc(100vh - 22px);overflow:scroll">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-换行">
+        <span class="has-mr-6">1.1</span>
+        <span>1.换行</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-标题">
+        <span class="has-mr-6">1.2</span>
+        <span>2.标题</span>
+        </a></li></ul><li>
+        <a class="is-flex" href="#一级标题">
+        <span class="has-mr-6">2</span>
+        <span>一级标题</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#二级标题">
+        <span class="has-mr-6">2.1</span>
+        <span>二级标题</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#三级标题">
+        <span class="has-mr-6">2.1.1</span>
+        <span>三级标题</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#3-区块引用">
+        <span class="has-mr-6">2.2</span>
+        <span>3.区块引用</span>
+        </a></li><li>
+        <a class="is-flex" href="#4-列表">
+        <span class="has-mr-6">2.3</span>
+        <span>4.列表</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-行内代码、代码块">
+        <span class="has-mr-6">2.4</span>
+        <span>5.行内代码、代码块</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#行内代码">
+        <span class="has-mr-6">2.4.1</span>
+        <span>行内代码</span>
+        </a></li><li>
+        <a class="is-flex" href="#代码块">
+        <span class="has-mr-6">2.4.2</span>
+        <span>代码块</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#链接">
+        <span class="has-mr-6">2.5</span>
+        <span>链接</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#自动链接-超链接">
+        <span class="has-mr-6">2.5.1</span>
+        <span>自动链接(超链接)</span>
+        </a></li><li>
+        <a class="is-flex" href="#图片链接">
+        <span class="has-mr-6">2.5.2</span>
+        <span>图片链接</span>
+        </a></li></ul></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/hub.png" alt="markdown 常用语法" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2022 tcbaby&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客&nbsp;
+                <span id="busuanzi_value_site_pv">0</span>次访问
+                </span>
+                
+                </p>
+            </div>
+            <!-- <div class="level-mid">
+                <span id="timeDate">载入天数...</span> &nbsp;
+                <span id="times">载入时分秒...</span>
+            </div> -->
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- <script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("4/29/2020 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站勉强运行了 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script> -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://tcbaby.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

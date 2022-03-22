@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <!-- FiraCode -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@3/distr/fira_code.css">
+    <!-- <link rel="stylesheet" href="/fonts/FiraCode-Regular.ttf"> -->
+    <!-- <link rel="stylesheet" href="/fonts/FiraCode-Retina.ttf"> -->
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>grep、sed、awk 命令 - tcbaby&#39;s blog</title>
+
+
+    <meta name="description" content="学习使用 grep、sed、awk 命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="grep、sed、awk 命令">
+<meta property="og:url" content="http://tcbaby.github.io/2021/11/04/tools/grep-sed-awk/index.html">
+<meta property="og:site_name" content="tcbaby&#39;s blog">
+<meta property="og:description" content="学习使用 grep、sed、awk 命令">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tcbaby.github.io/images/og_image.png">
+<meta property="article:published_time" content="2021-11-04T03:01:50.000Z">
+<meta property="article:modified_time" content="2022-03-22T07:23:36.240Z">
+<meta property="article:author" content="tcbaby">
+<meta property="article:tag" content="regex">
+<meta property="article:tag" content="grep">
+<meta property="article:tag" content="sed">
+<meta property="article:tag" content="awk">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tcbaby.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/hub.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/xcode.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/hub.png" alt="grep、sed、awk 命令" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="My GitHub" href="https://www.github.com/tcbaby">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>grep、sed、awk 命令
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-11-04T03:01:50.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2021-11-04</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2022-03-22T07:23:36.240Z"><i class="far fa-calendar-check">&nbsp;</i>2022-03-22</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/tools/">tools</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    12 分钟 读完 (大约 1866 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>学习使用 grep、sed、awk 命令</p>
+<a id="more"></a>
+
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h3 id="匹配开头结尾"><a href="#匹配开头结尾" class="headerlink" title="匹配开头结尾"></a>匹配开头结尾</h3><ul>
+<li><code>^</code> 匹配开头 例子：<code>^abc</code> 匹配以abc开头的</li>
+<li><code>$</code> 匹配结尾 例子：<code>abc$</code> 匹配以abc结尾的</li>
+<li><code>^$</code> 匹配空</li>
+</ul>
+<h3 id="匹配单个字符"><a href="#匹配单个字符" class="headerlink" title="匹配单个字符"></a>匹配单个字符</h3><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[]</td>
+<td>匹配括号中的任意一个字符, 括号中加^<code>[^]</code>表示匹配非括号中字符任意一个</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配一个数字, 0-9</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配一个非数字</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配空白, 即空格,tab…</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配非空白</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配一个单词字符, a-z, A-Z, 0-9, _, 各国语言的字</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配一个非单词字符</td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配任意一个字符(\n除外)， 在DOTALL模式能匹配换行符</td>
+</tr>
+</tbody></table>
+<h3 id="匹配多个字符"><a href="#匹配多个字符" class="headerlink" title="匹配多个字符"></a>匹配多个字符</h3><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*</td>
+<td>匹配前一个字符0或多次</td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配前一个字符1或多次</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配前一个字符0或1次</td>
+</tr>
+<tr>
+<td>{m}</td>
+<td>匹配前一个字符m次</td>
+</tr>
+<tr>
+<td>{m, n}</td>
+<td>匹配前一个字符m到n次</td>
+</tr>
+<tr>
+<td>{m, }</td>
+<td>匹配前一个字符m次以上</td>
+</tr>
+<tr>
+<td>{, n}</td>
+<td>最多匹配前一个字符n次</td>
+</tr>
+</tbody></table>
+<h3 id="匹配分组"><a href="#匹配分组" class="headerlink" title="匹配分组"></a>匹配分组</h3><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>|</td>
+<td>匹配左右任意一个表达式</td>
+</tr>
+<tr>
+<td>()</td>
+<td>将括号中的字符作为一个分组， 分组号从1开始</td>
+</tr>
+</tbody></table>
+<h2 id="grep-命令"><a href="#grep-命令" class="headerlink" title="grep 命令"></a>grep 命令</h2><p>命令格式： <code>grep [OPTIONS] PATTERN [FILE...]</code></p>
+<p>用于过滤</p>
+<ul>
+<li>参数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-v: 选中没有匹配到的行</span><br><span class="line">-E: 等同于&#96;egrep&#96;， 使支持拓展正则(&#96;+ | () &#123;&#125; ? &#96;)</span><br><span class="line">-w: 精确匹配整个单词（过滤端口、进程的时候可以使用）    --word-regexp</span><br><span class="line">-i: 忽略大小写</span><br><span class="line">-o: 仅输出匹配到的内容</span><br><span class="line">-c: 输出匹配到的行数</span><br><span class="line">-n: 显示行号</span><br><span class="line">-An: 输出匹配到的内容及其后面的 n 行  --after-context</span><br><span class="line">-Bn: 输出匹配到的内容及其前面的 n 行   --before-context</span><br><span class="line">-Cn: 输出匹配到的内容及其前后面的 n 行  --context</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>练习</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 排除空行</span></span><br><span class="line">grep -v '^$' /etc/profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 排除空行和<span class="string">'#'</span>注释的行</span></span><br><span class="line">grep -vE '^$|^#' /etc/profile</span><br><span class="line">grep -vE '^($|#)' /etc/profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出文件中的单词  </span></span><br><span class="line">egrep -o '[a-Z]+' /etc/profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 匹配 hello | hallo</span></span><br><span class="line">echo -e 'hello world\nhallo world' | grep -oE 'h(e|a)llo'</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ps + grep 查看进程是否运行 会匹配到此时运行的命令</span></span><br><span class="line">ps -ef | grep dockerd</span><br><span class="line"><span class="meta">#</span><span class="bash"> 不会配自身</span></span><br><span class="line">ps -ef | grep dockerd | grep -v grep</span><br><span class="line">ps -ef | grep [d]ockerd   # 此时运行的命令`grep [d]ockerd`， 二我们要找的是 dockerd</span><br></pre></td></tr></table></figure>
+
+<h2 id="sed-命令"><a href="#sed-命令" class="headerlink" title="sed 命令"></a>sed 命令</h2><p>sed - stream editor for filtering and transforming text<br>命令格式：<code>sed [OPTION]... {script-only-if-no-other-script} [input-file]</code><br>执行流程：按行读取内容到模式空间；匹配内容；执行增删改查操作</p>
+<ul>
+<li>参数：</li>
+</ul>
+<p>-n: 取消模式空间默认输出<br>-r: 使其支持拓展正则</p>
+<h3 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">p: 打印 </span><br><span class="line">d: 删除 delete</span><br><span class="line"></span><br><span class="line">c: 替换一行的内容</span><br><span class="line">a: 指定行后面追加内容</span><br><span class="line">i: 指定行前面插入内容</span><br><span class="line"></span><br><span class="line">s: 替换 substitute</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查 p</li>
+</ul>
+<p><strong>注意： 只想输出指定内容时，一定要使用 <font color='red'>-n</font> 参数 (<code>sed -n ...</code>)，取消模式空间默认输出</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#39;np&#39;: 查第 n 行， 注意不是 &#x2F;n&#x2F;</span><br><span class="line">&#39;m,np&#39;: 查 m 到 n 行</span><br><span class="line">&#39;&#x2F;regexp&#x2F;p&#39;: 查 &#x2F;&#x2F; 中表达式命中的行，类似grep</span><br><span class="line">&#39;&#x2F;reg1&#x2F;,&#x2F;reg2&#x2F;p&#39;: 查表达式1命中的行，到表达式2命中的行。注意：如果表达式2没有命中内容，则会一直查到文件结尾，并输出。</span><br><span class="line">&#39;n,&#x2F;reg&#x2F;p&#39;: 混用</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删  d</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#39;nd&#39;：删除第n行</span><br><span class="line">&#39;$d&#39;：删除最后一行</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>增 a,i</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#39;ni str&#39;: 在第n行前插入 str\n</span><br><span class="line">&#39;na str&#39;: 在第n行后增加 str\n</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>替换  s</li>
+</ul>
+<p>格式：<code>sed &#39;s/old/new/g&#39;</code>  将 old（可以是表达式），匹配到的内容，替换成 new</p>
+<ul>
+<li>/: 三个’/‘ 是分隔符，也可以用其它的符号表示， 如：’#’、‘@’</li>
+<li>g: 全局替换，不加 ‘g’ 默认只替换每行第一个匹配到的内容</li>
+</ul>
+<ul>
+<li>例子</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打印配置，排除空行、注释</span></span><br><span class="line">sed -r '/^$|^#/d' /etc/profile      # 默认不修改文件，打印删除后的内容</span><br><span class="line">sed -nr '/^$|^#/!p' /etc/profile    # '!' 取反， !p，表示不打印命中的内容</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 分组   \1, \2 ... 引用内容</span></span><br><span class="line">echo hello world | sed -r 's/(.*) (.*)/\2 \1/'     # 交换前后两个单词的位置</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取所有网卡 ip</span></span><br><span class="line">ip addr | sed -nr '/^ +inet .*/p' | sed -r 's#^.* (.*)/.*#\1#'</span><br><span class="line"><span class="meta">#</span><span class="bash"> 取eth0网卡 ip</span></span><br><span class="line">ip addr show eth0 | sed -n '3p' | sed -r 's#^.* (.*)/.*#\1#'</span><br><span class="line">ip addr show eth0 | sed -nr '3s#^.* (.*)/.*#\1#p'   # 打印行、替换合并版</span><br></pre></td></tr></table></figure>
+
+<h3 id="N-n-指令"><a href="#N-n-指令" class="headerlink" title="N/n 指令"></a>N/n 指令</h3><p><code>N</code>: 先读入第一行到pattern space，然后执行N命令，将第二行追加进pattern space。此时模式空间数据： ‘第一行内容\n第二行内容’<br><code>n</code>: 先读入第一行到pattern space，然后执行n命令，用第二行覆盖pattern space。此时模式空间只有第二行内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">seq 1 10 | sed -n 'p;n'  # 奇数</span><br><span class="line">seq 1 10 | sed -n 'n;p'  # 偶数</span><br><span class="line"><span class="meta">#</span><span class="bash"> 合并奇偶行</span></span><br><span class="line">seq 1 8 |sed -n 'N; s/\n//p'</span><br><span class="line">12</span><br><span class="line">34</span><br><span class="line">56</span><br><span class="line">78</span><br></pre></td></tr></table></figure>
+
+<h2 id="awk-命令"><a href="#awk-命令" class="headerlink" title="awk 命令"></a>awk 命令</h2><p>gawk - pattern scanning and processing language  </p>
+<p>常用于过滤、统计计算、对比比较</p>
+<p>命令格式：</p>
+<ul>
+<li>awk [-W option] [-F value] [-v var=value] [–] ‘program text’ [file …]</li>
+<li>awk [-W option] [-F value] [-v var=value] [-f program-file] [–] [file …]</li>
+<li><font color='red'>awk  参数选项 ‘条件 {动作}’</font><ul>
+<li>条件：比较符号、正则、范围表达式、特殊条件： BEGIN、END</li>
+</ul>
+</li>
+</ul>
+<p><strong>置变量：</strong></p>
+<ul>
+<li><p><code>NR</code>: Number of Record  记录号 即<strong>行号</strong></p>
+</li>
+<li><p><code>NF</code>: Number of Field  每行的字段数，即<strong>列数</strong></p>
+</li>
+<li><p><code>FS</code>: Field Separator 字段分割符，即列分隔符</p>
+</li>
+<li><p><code>OFS</code>:  Output Field Separator 输出字段分割符</p>
+</li>
+</ul>
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>-F</code>:  指定列分隔符， 默认（空白符、连续的空白符）</li>
+<li><code>-v</code>: 设置变量 <ul>
+<li><code>-vFS=:</code>：相当于 <code>-F:</code>  设置列分隔符分’:’</li>
+<li><code>-vOFS=:</code>：设置输出分隔符分’:’</li>
+</ul>
+</li>
+</ul>
+<h3 id="行与列"><a href="#行与列" class="headerlink" title="行与列"></a>行与列</h3><p>行：awk叫 record , 默认通过回车分割</p>
+<p>列：awk叫 field（字段、域），默认通过空格分隔</p>
+<ul>
+<li>取行</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 取第一行</span></span><br><span class="line">awk 'NR==1' /etc/passwd</span><br><span class="line"><span class="meta">#</span><span class="bash"> 取三到五行</span></span><br><span class="line">awk 'NR==1,NR==3' /etc/passwd</span><br><span class="line">awk 'NR&gt;=3 &amp;&amp; NR&lt;=5' /etc/passwd</span><br><span class="line"><span class="meta">#</span><span class="bash"> 取第三、第五行</span></span><br><span class="line">awk 'NR==3 || NR==5' /etc/passwd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用正则</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取包含 sys 的行</span></span><br><span class="line">awk '/sys/' /etc/passwd</span><br><span class="line"><span class="meta">#</span><span class="bash"> 取 s 开头的行</span></span><br><span class="line">awk '/^s/' /etc/passwd</span><br><span class="line"><span class="meta">#</span><span class="bash"> 从包含 root 的行， 取到包含 sys 的行</span></span><br><span class="line">awk '/root/,/sys/' /etc/passwd</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>取列<ul>
+<li><code>$n</code>: 引用第n列</li>
+<li><code>$NF</code>: 引用最后一列</li>
+<li><code>$0</code>: 引用整行，即 $1 $2 … $NF</li>
+<li><code>$n~/reg/</code>:  第n列满足表达式reg的</li>
+<li><code>$n!~/reg/</code>:  第n列满足表达式reg的</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 取第一列和最后一列</span></span><br><span class="line">awk -F: '&#123;print $1,$NF&#125;' /etc/passwd | column -t</span><br><span class="line"><span class="meta">#</span><span class="bash"> 取第一列和最后一列 输出使用 <span class="string">':'</span> 分割</span></span><br><span class="line">awk -F: '&#123;print $1":"$NF&#125;' /etc/passwd</span><br><span class="line">awk -F: -vOFS=: '&#123;print $1,$NF&#125;' /etc/passwd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取用户标识号大于100的</span></span><br><span class="line">awk -F: '$3&gt;=100&#123;print $1,$3&#125;' /etc/passwd | column -t</span><br><span class="line"><span class="meta">#</span><span class="bash"> 取可以登录的用户</span></span><br><span class="line">awk -F: '$NF!~/nologin$/ &#123;print $1&#125;' /etc/passwd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取网卡IP地址</span></span><br><span class="line">ip addr show eth0 | awk -F'[ /]+' 'NR==3 &#123;print $3&#125;'</span><br><span class="line">ip addr | awk -F'[ /]+' '/inet / &#123;print $3&#125;'</span><br></pre></td></tr></table></figure>
+
+<h3 id="特殊模式-BEGIN-、END"><a href="#特殊模式-BEGIN-、END" class="headerlink" title="特殊模式  BEGIN{}、END{}"></a>特殊模式  BEGIN{}、END{}</h3><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>含义</th>
+<th>应用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BEGIN{}</td>
+<td>读取文件前执行</td>
+<td>1. 进行简单计算，不涉及文件读取<br>2.处理文件前添加表头<br>3.定义awk变量（仅仅是定义变量，建议使用-v参数）</td>
+</tr>
+<tr>
+<td><font color='red'>END{}</font></td>
+<td>读取文件后执行</td>
+<td>1. 进行统计<br>2.用来输出数组内容</td>
+</tr>
+</tbody></table>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 累加求和</span></span><br><span class="line">seq 100 | awk '&#123;sum=sum+$1; print sum&#125;'</span><br><span class="line">seq 100 | awk '&#123;sum=sum+$1&#125; END&#123;print sum&#125;'  # 只打印最后结果</span><br><span class="line">awk 'BEGIN&#123;for(i=1;i&lt;=100;++i) &#123;sum+=i&#125; print(sum)&#125;'</span><br><span class="line">awk 'BEGIN&#123;for(i=1;i&lt;=100;++i) sum+=i; print(sum)&#125;'</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 数组使用</span></span><br><span class="line">awk 'BEGIN&#123;arr[0]=1234;arr[1]="hello world"; for(i in arr) print i,arr[i]&#125;'</span><br><span class="line"><span class="meta">#</span><span class="bash"> 统计历史命令输入的次数</span></span><br><span class="line">history | awk '&#123;arr[$2]++&#125; END&#123;for(i in arr) print i, arr[i]&#125;' | sort -rnk2</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出单词长度大于等于5的</span></span><br><span class="line">echo 'hello awk!' | awk -F'[ !]+' '&#123;for(i=1;i&lt;=NF;++i) if(length($i)&gt;=5) print $i&#125;'</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>tips: awk 字符串 需要使用 双引号, 否则会被当做变量标志符</p>
+</blockquote>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://tcbaby.github.io/2021/11/04/tools/grep-sed-awk/">grep、sed、awk 命令</a></li>
+            <li><strong>本文作者：</strong><a href="http://tcbaby.github.io">tcbaby</a></li>
+            <li><strong>本文链接：</strong><a href="http://tcbaby.github.io/2021/11/04/tools/grep-sed-awk/">http://tcbaby.github.io/2021/11/04/tools/grep-sed-awk/</a></li>
+            <li><strong>发布时间：</strong>2021-11-04</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/awk/" rel="tag">awk</a>,&nbsp;<a class="has-link-grey -link" href="/tags/grep/" rel="tag">grep</a>,&nbsp;<a class="has-link-grey -link" href="/tags/regex/" rel="tag">regex</a>,&nbsp;<a class="has-link-grey -link" href="/tags/sed/" rel="tag">sed</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.png" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2021/06/10/database/es-dump/">
+                <span class="level-item">es 数据备份、还原、迁移</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: '0MVesHWBYVPevIO52bj7lzha-gzGzoHsz',
+        app_key: 'vXNqehkuCjwju4w3eT6oYs97',
+        placeholder: 'Just Do It...'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-96x96 has-mb-6">
+                        <img class="" src="/images/hub.png" alt="tcbaby">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        tcbaby
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        cbtan@foxmail.com
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Chongqing, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        33
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        5
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        28
+                    </p>
+                </a>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/tcbaby" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content" style="max-height:calc(100vh - 22px);overflow:scroll">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#正则表达式">
+        <span class="has-mr-6">1</span>
+        <span>正则表达式</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#匹配开头结尾">
+        <span class="has-mr-6">1.1</span>
+        <span>匹配开头结尾</span>
+        </a></li><li>
+        <a class="is-flex" href="#匹配单个字符">
+        <span class="has-mr-6">1.2</span>
+        <span>匹配单个字符</span>
+        </a></li><li>
+        <a class="is-flex" href="#匹配多个字符">
+        <span class="has-mr-6">1.3</span>
+        <span>匹配多个字符</span>
+        </a></li><li>
+        <a class="is-flex" href="#匹配分组">
+        <span class="has-mr-6">1.4</span>
+        <span>匹配分组</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#grep-命令">
+        <span class="has-mr-6">2</span>
+        <span>grep 命令</span>
+        </a></li><li>
+        <a class="is-flex" href="#sed-命令">
+        <span class="has-mr-6">3</span>
+        <span>sed 命令</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#增删改查">
+        <span class="has-mr-6">3.1</span>
+        <span>增删改查</span>
+        </a></li><li>
+        <a class="is-flex" href="#N-n-指令">
+        <span class="has-mr-6">3.2</span>
+        <span>N/n 指令</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#awk-命令">
+        <span class="has-mr-6">4</span>
+        <span>awk 命令</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#行与列">
+        <span class="has-mr-6">4.1</span>
+        <span>行与列</span>
+        </a></li><li>
+        <a class="is-flex" href="#特殊模式-BEGIN-、END">
+        <span class="has-mr-6">4.2</span>
+        <span>特殊模式  BEGIN{}、END{}</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/hub.png" alt="grep、sed、awk 命令" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2022 tcbaby&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客&nbsp;
+                <span id="busuanzi_value_site_pv">0</span>次访问
+                </span>
+                
+                </p>
+            </div>
+            <!-- <div class="level-mid">
+                <span id="timeDate">载入天数...</span> &nbsp;
+                <span id="times">载入时分秒...</span>
+            </div> -->
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- <script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("4/29/2020 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站勉强运行了 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script> -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://tcbaby.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <!-- FiraCode -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@3/distr/fira_code.css">
+    <!-- <link rel="stylesheet" href="/fonts/FiraCode-Regular.ttf"> -->
+    <!-- <link rel="stylesheet" href="/fonts/FiraCode-Retina.ttf"> -->
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>SpringBoot集成Thymeleaf - tcbaby&#39;s blog</title>
+
+
+    <meta name="description" content="Thymeleaf语法、页面静态化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot集成Thymeleaf">
+<meta property="og:url" content="http://tcbaby.github.io/2020/05/06/Spring/thymeleaf/index.html">
+<meta property="og:site_name" content="tcbaby&#39;s blog">
+<meta property="og:description" content="Thymeleaf语法、页面静态化">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tcbaby.github.io/images/og_image.png">
+<meta property="article:published_time" content="2020-05-06T02:50:12.000Z">
+<meta property="article:modified_time" content="2022-03-22T07:23:36.236Z">
+<meta property="article:author" content="tcbaby">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="Thymeleaf">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tcbaby.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/hub.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/xcode.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/hub.png" alt="SpringBoot集成Thymeleaf" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="My GitHub" href="https://www.github.com/tcbaby">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>SpringBoot集成Thymeleaf
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-06T02:50:12.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-06</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2022-03-22T07:23:36.236Z"><i class="far fa-calendar-check">&nbsp;</i>2022-03-22</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    11 分钟 读完 (大约 1712 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>Thymeleaf语法、页面静态化</p>
+<a id="more"></a>
+
+<h2 id="Thymeleaf"><a href="#Thymeleaf" class="headerlink" title="Thymeleaf"></a>Thymeleaf</h2><p>Thymeleaf是用来开发web和独立环境项目的现代服务器端Java模板引擎。</p>
+<ul>
+<li>动静结合：Thymeleaf再有网无网络的环境下皆可运行</li>
+<li>开箱急用，多方言支持</li>
+<li>与SpringBoot完美整合</li>
+</ul>
+<h3 id="视图解析"><a href="#视图解析" class="headerlink" title="视图解析"></a>视图解析</h3><p><code>ThymeleafViewResolver</code>， 与解析JSP的InternalViewResolver类似，Thymeleaf也会根据前缀和后缀来确定模板文件的位置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"spring.thymeleaf"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThymeleafProperties</span> </span>&#123;</span><br><span class="line">    <span class="comment">/* 默认前缀 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEFAULT_PREFIX = <span class="string">"classpath:/templates/"</span>;</span><br><span class="line">    <span class="comment">/* 默认后缀 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEFAULT_SUFFIX = <span class="string">".html"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="页面缓存"><a href="#页面缓存" class="headerlink" title="页面缓存"></a>页面缓存</h3><p>Thymeleaf默认会开启网页缓存，提高页面的并发能力，但会导致我们修改页面不会立即被展现。所以我们在开发中需要先禁用缓存：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.thymeleaf.cache</span>=<span class="string">false	# 设置为不缓存</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：在idea中，禁用缓存后，每次修改页面，还需要recompile一下页面，才能在刷新网页。</p>
+<h3 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h3><ul>
+<li>引入依赖</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>HelloContorller.java</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelAndView <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ModelAndView mv = <span class="keyword">new</span> ModelAndView();</span><br><span class="line">        mv.addObject(<span class="string">"msg"</span>, <span class="string">"hello thymeleaf!"</span>);</span><br><span class="line">        mv.setViewName(<span class="string">"hello"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> mv;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hello.html</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">th:text</span>=<span class="string">"$&#123;msg&#125;"</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>访问该controller的地址，即可看到渲染结果</li>
+</ul>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id=""><a href="#" class="headerlink" title="${}  @{} ||"></a>${}  @{} ||</h3><ul>
+<li><code>${}</code> ：变量表达式，获取Model中的变量值，ognl的语法。</li>
+<li><code>@{}</code>：url表达式<ul>
+<li><code>@{/user(id=1)}</code>： /user?id=1</li>
+</ul>
+</li>
+<li><code>||</code>：双竖线中可以有普通字符串，也可以有变量表达式<ul>
+<li><code>|page-item ${page=1 ? &#39;disabled&#39; : &#39;&#39;}|</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="th-text-th-utest"><a href="#th-text-th-utest" class="headerlink" title="th:text / th:utest"></a>th:text / th:utest</h3><ul>
+<li>th:text 读到的值会格式化输出，可以防止HTML注入</li>
+<li>th:utest 输出原始内容，可以渲染html代码</li>
+</ul>
+<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><ul>
+<li>字符串字面量：使用单引号引起来</li>
+<li>数字字面量：数字不需要任何特殊语法， 写的什么就是什么</li>
+<li>布尔字面量：true / false</li>
+</ul>
+<h3 id="自定义变量"><a href="#自定义变量" class="headerlink" title="自定义变量"></a>自定义变量</h3><p>频繁的使用${user.}来获取属性值会非常麻烦，因此Thymeleaf通过自定变量来解决这个问题</p>
+<ul>
+<li>再div标签上使用th:object=”${user}”获取user的值，并保存下来</li>
+<li>然后在该标签内部任意元素上，通过*{属性名}的方式，来获取对象中的属性值</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>User<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:object</span>=<span class="string">"$&#123;user&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>username: <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"*&#123;username&#125;"</span>&gt;</span>username<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>password: <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"*&#123;password&#125;"</span>&gt;</span>password<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3><p>支持算术运算、比较运算、条件运算。</p>
+<p>需要注意：<code>${}</code>内部的是通过OGNL表达式引擎解析的，外部的才是通过Thymeleaf的引擎解析，因此运算符尽量放在<code>${}</code>外进行。</p>
+<h3 id="逻辑判断"><a href="#逻辑判断" class="headerlink" title="逻辑判断"></a>逻辑判断</h3><ul>
+<li>th:if  / th:else</li>
+<li>th:switch / th:case：一旦有一个th:case成立，其它的则不再判断</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:switch</span>=<span class="string">"$&#123;user.role&#125;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:case</span>=<span class="string">"'admin'"</span>&gt;</span>用户是管理员<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:case</span>=<span class="string">"'manager'"</span>&gt;</span>用户是经理<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:case</span>=<span class="string">"*"</span>&gt;</span>用户是别的玩意<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="th-each循环遍历"><a href="#th-each循环遍历" class="headerlink" title="th:each循环遍历"></a>th:each循环遍历</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- stat循环状态对象 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:each</span>=<span class="string">"user, stat : $&#123;users&#125;"</span>&gt;</span></span><br><span class="line">    姓名：<span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.name&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    年龄：<span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.age&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以遍历一下类型：</p>
+<ul>
+<li>Iterable，实现了Iterable接口的类</li>
+<li>Enumeration，枚举</li>
+<li>Interator，迭代器</li>
+<li>Map，遍历得到的是Map.Entry</li>
+<li>Array，数组及其它一切符合数组结果的对象</li>
+</ul>
+<p><strong>stat对象</strong>包含以下属性：</p>
+<ul>
+<li>index，从0开始的角标</li>
+<li>count，元素的个数，从1开始</li>
+<li>size，总元素个数</li>
+<li>current，当前遍历到的元素</li>
+<li>even/odd，返回是否为奇偶，boolean值</li>
+<li>first/last，返回是否为第一或最后，boolean值</li>
+</ul>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>ognl表达式本身就支持方法调用，如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 调用string的split方法 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.name.split(' ')[0]&#125;"</span>&gt;</span>Jack<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h3><p>Thymeleaf中提供了一些内置对象，并且在这些对象中提供了一些方法，方便我们来调用。获取这些对象，需要使用<code>#对象名</code>来引用。</p>
+<ul>
+<li>一些环境相关对象</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">对象</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>#ctx</code></td>
+<td align="left">获取Thymeleaf自己的Context对象</td>
+</tr>
+<tr>
+<td align="center"><code>#requset</code></td>
+<td align="left">如果是web程序，可以获取HttpServletRequest对象</td>
+</tr>
+<tr>
+<td align="center"><code>#response</code></td>
+<td align="left">如果是web程序，可以获取HttpServletReponse对象</td>
+</tr>
+<tr>
+<td align="center"><code>#session</code></td>
+<td align="left">如果是web程序，可以获取HttpSession对象</td>
+</tr>
+<tr>
+<td align="center"><code>#servletContext</code></td>
+<td align="left">如果是web程序，可以获取HttpServletContext对象</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Thymeleaf提供的全局对象：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">对象</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>#dates</code></td>
+<td align="left">处理java.util.date的工具对象</td>
+</tr>
+<tr>
+<td align="center"><code>#calendars</code></td>
+<td align="left">处理java.util.calendar的工具对象</td>
+</tr>
+<tr>
+<td align="center"><code>#numbers</code></td>
+<td align="left">用来对数字格式化的方法</td>
+</tr>
+<tr>
+<td align="center"><code>#strings</code></td>
+<td align="left">用来处理字符串的方法</td>
+</tr>
+<tr>
+<td align="center"><code>#bools</code></td>
+<td align="left">用来判断布尔值的方法</td>
+</tr>
+<tr>
+<td align="center"><code>#arrays</code></td>
+<td align="left">用来护理数组的方法</td>
+</tr>
+<tr>
+<td align="center"><code>#lists</code></td>
+<td align="left">用来处理List集合的方法</td>
+</tr>
+<tr>
+<td align="center"><code>#sets</code></td>
+<td align="left">用来处理set集合的方法</td>
+</tr>
+<tr>
+<td align="center"><code>#maps</code></td>
+<td align="left">用来处理map集合的方法</td>
+</tr>
+</tbody></table>
+<ul>
+<li>例子：显示当前日期</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">th:text</span>=<span class="string">"$&#123;#dates.format(#dates.createNow(), 'yyyy-MM-dd')&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="js模板"><a href="#js模板" class="headerlink" title="js模板"></a>js模板</h3><p>模板引擎不仅可以渲染html，也可以对JS中的进行预处理。而且为了在纯静态环境下可以运行，其Thymeleaf代码可以被注释起来：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">th:inline</span>=<span class="string">"javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">const</span> user = <span class="comment">/*[[$&#123;user&#125;]]*/</span> &#123;&#125;;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">const</span> age = <span class="comment">/*[[$&#123;user.age&#125;]]*/</span> <span class="number">20</span>;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(user);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(age)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>在script标签中通过<code>th:inline=&quot;javascript&quot;</code>来声明这是要特殊处理的js脚本</p>
+</li>
+<li><p>语法结构：</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = <span class="comment">/*[[Thymeleaf表达式]]*/</span> <span class="string">"静态环境下的默认值"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>  因为Thymeleaf被注释起来，因此即便是静态环境下， js代码也不会报错，而是采用表达式后面跟着的默认值。</p>
+</li>
+</ul>
+<h2 id="页面静态化"><a href="#页面静态化" class="headerlink" title="页面静态化"></a>页面静态化</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>静态化是指<strong>把动态生成的HTML页面变为静态内容保存</strong>，以后用户的请求到来，直接访问静态页面，不再经过服务的渲染。</p>
+<p>目前，静态化页面都是通过模板引擎来生成，而后保存到nginx服务器来部署。</p>
+<p>常用的模板引擎比如：</p>
+<ul>
+<li>Freemarker</li>
+<li>Velocity</li>
+<li>Thymeleaf</li>
+</ul>
+<h3 id="使用Thymeleaf实现"><a href="#使用Thymeleaf实现" class="headerlink" title="使用Thymeleaf实现"></a>使用Thymeleaf实现</h3><p><strong>概念：</strong></p>
+<ul>
+<li><strong>Context</strong>：thymeleaf运行上下文， <strong>存放数据模型</strong><ul>
+<li>当与SpringBoot结合使用时，我们放入Model的数据就会被处理到Context，作为模板渲染的数据使用。</li>
+</ul>
+</li>
+<li><strong>TemplateResolver</strong>：模板解析器，用来读取模板相关的配置<ul>
+<li>当与SpringBoot结合时，TemplateResolver已经由其创建完成，并且各种配置也都有默认值。</li>
+</ul>
+</li>
+<li><strong>TemplateEngine</strong>：模板引擎， 用来解析模板的引擎<ul>
+<li>SpringBoot中已经自动配置了模板引擎</li>
+<li>静态化方法：<code>templateEngine.process(&quot;模板名&quot;, context, writer);</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>代码实现：</strong></p>
+<ul>
+<li>service</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createGoodsHtml</span><span class="params">(Long spuId, Map&lt;String, Object&gt; attributeMap)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 创建thymeleaf运行上下文</span></span><br><span class="line">    Context context = <span class="keyword">new</span> Context();</span><br><span class="line">    <span class="comment">// 设置参数</span></span><br><span class="line">    context.setVariables(attributeMap);</span><br><span class="line"></span><br><span class="line">    String filename = <span class="string">"C:\\ProgramFiles\\nginx-1.17.8\\html\\goods\\"</span> + spuId + <span class="string">".html"</span>;</span><br><span class="line">    <span class="keyword">try</span>(</span><br><span class="line">        FileWriter writer = <span class="keyword">new</span> FileWriter(filename)</span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="comment">// 生成html文件</span></span><br><span class="line">        templateEngine.process(<span class="string">"goods"</span>, context, writer);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        log.error(<span class="string">"[商品详情页&#123;&#125;.html静态化失败]: "</span>, spuId, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>controller</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/&#123;id&#125;.html"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toGoodsPage</span><span class="params">(@PathVariable(value = <span class="string">"id"</span>)</span> Long spuId, Model model) </span>&#123;</span><br><span class="line">    Map&lt;String, Object&gt; attributeMap = goodsService.queryGoodsbySpuId(spuId);</span><br><span class="line">    model.addAllAttributes(attributeMap);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生成静态页面</span></span><br><span class="line">    goodsService.createGoodsHtml(spuId, attributeMap);</span><br><span class="line">    <span class="comment">// 返回页面视图</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"goods"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置nginx</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  server &#123;</span><br><span class="line">      listen       <span class="number">80</span>;</span><br><span class="line">      server_name  www.leyou.com;</span><br><span class="line"></span><br><span class="line"># location映射规则, proxy_pass代理转发</span><br><span class="line">      location /goods &#123;</span><br><span class="line">          # 先找本地</span><br><span class="line">          root html;</span><br><span class="line">          # 请求的文件不存在，就反向代理</span><br><span class="line">          <span class="keyword">if</span> (!-f $request_filename) &#123;</span><br><span class="line">              proxy_pass http:<span class="comment">//127.0.0.1:8084;</span></span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          proxy_connect_timeout       <span class="number">600</span>;</span><br><span class="line">          proxy_read_timeout          <span class="number">600</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://tcbaby.github.io/2020/05/06/Spring/thymeleaf/">SpringBoot集成Thymeleaf</a></li>
+            <li><strong>本文作者：</strong><a href="http://tcbaby.github.io">tcbaby</a></li>
+            <li><strong>本文链接：</strong><a href="http://tcbaby.github.io/2020/05/06/Spring/thymeleaf/">http://tcbaby.github.io/2020/05/06/Spring/thymeleaf/</a></li>
+            <li><strong>发布时间：</strong>2020-05-06</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/Java/" rel="tag">Java</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Spring/" rel="tag">Spring</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Thymeleaf/" rel="tag">Thymeleaf</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.png" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/07/Java/Java%E6%B3%A8%E8%A7%A3/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Java注解</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/03/Spring/%E8%AE%B0%E5%BD%95%E7%B3%BB%E7%BB%9F%E6%97%A5%E5%BF%97/">
+                <span class="level-item">SpringBoot项目中使用切面记录系统日志</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: '0MVesHWBYVPevIO52bj7lzha-gzGzoHsz',
+        app_key: 'vXNqehkuCjwju4w3eT6oYs97',
+        placeholder: 'Just Do It...'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-96x96 has-mb-6">
+                        <img class="" src="/images/hub.png" alt="tcbaby">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        tcbaby
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        cbtan@foxmail.com
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Chongqing, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        33
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        5
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        28
+                    </p>
+                </a>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/tcbaby" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content" style="max-height:calc(100vh - 22px);overflow:scroll">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Thymeleaf">
+        <span class="has-mr-6">1</span>
+        <span>Thymeleaf</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#视图解析">
+        <span class="has-mr-6">1.1</span>
+        <span>视图解析</span>
+        </a></li><li>
+        <a class="is-flex" href="#页面缓存">
+        <span class="has-mr-6">1.2</span>
+        <span>页面缓存</span>
+        </a></li><li>
+        <a class="is-flex" href="#快速入门">
+        <span class="has-mr-6">1.3</span>
+        <span>快速入门</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#语法">
+        <span class="has-mr-6">2</span>
+        <span>语法</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#">
+        <span class="has-mr-6">2.1</span>
+        <span>${}  @{} ||</span>
+        </a></li><li>
+        <a class="is-flex" href="#th-text-th-utest">
+        <span class="has-mr-6">2.2</span>
+        <span>th:text / th:utest</span>
+        </a></li><li>
+        <a class="is-flex" href="#字面量">
+        <span class="has-mr-6">2.3</span>
+        <span>字面量</span>
+        </a></li><li>
+        <a class="is-flex" href="#自定义变量">
+        <span class="has-mr-6">2.4</span>
+        <span>自定义变量</span>
+        </a></li><li>
+        <a class="is-flex" href="#运算">
+        <span class="has-mr-6">2.5</span>
+        <span>运算</span>
+        </a></li><li>
+        <a class="is-flex" href="#逻辑判断">
+        <span class="has-mr-6">2.6</span>
+        <span>逻辑判断</span>
+        </a></li><li>
+        <a class="is-flex" href="#th-each循环遍历">
+        <span class="has-mr-6">2.7</span>
+        <span>th:each循环遍历</span>
+        </a></li><li>
+        <a class="is-flex" href="#方法">
+        <span class="has-mr-6">2.8</span>
+        <span>方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#内置对象">
+        <span class="has-mr-6">2.9</span>
+        <span>内置对象</span>
+        </a></li><li>
+        <a class="is-flex" href="#js模板">
+        <span class="has-mr-6">2.10</span>
+        <span>js模板</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#页面静态化">
+        <span class="has-mr-6">3</span>
+        <span>页面静态化</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#概念">
+        <span class="has-mr-6">3.1</span>
+        <span>概念</span>
+        </a></li><li>
+        <a class="is-flex" href="#使用Thymeleaf实现">
+        <span class="has-mr-6">3.2</span>
+        <span>使用Thymeleaf实现</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/hub.png" alt="SpringBoot集成Thymeleaf" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2022 tcbaby&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客&nbsp;
+                <span id="busuanzi_value_site_pv">0</span>次访问
+                </span>
+                
+                </p>
+            </div>
+            <!-- <div class="level-mid">
+                <span id="timeDate">载入天数...</span> &nbsp;
+                <span id="times">载入时分秒...</span>
+            </div> -->
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- <script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("4/29/2020 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站勉强运行了 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script> -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://tcbaby.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

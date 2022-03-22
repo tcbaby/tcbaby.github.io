@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <!-- FiraCode -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@3/distr/fira_code.css">
+    <!-- <link rel="stylesheet" href="/fonts/FiraCode-Regular.ttf"> -->
+    <!-- <link rel="stylesheet" href="/fonts/FiraCode-Retina.ttf"> -->
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>AJAX与跨域访问 - tcbaby&#39;s blog</title>
+
+
+    <meta name="description" content="ASynchronous JavaScript And XML  异步和同步：在客户端和服务器端相互通信的基础上 同步：客户端必须等待服务器端的响应。在等待的期间客户端不能做其他操作。 异步：客户端不需要等待服务器端的响应。在服务器处理请求的过程中，客户端可以进行其他的操作。   Ajax 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。 可以在不重新加载整个网页的情况下，对网页的某">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AJAX与跨域访问">
+<meta property="og:url" content="http://tcbaby.github.io/2021/03/06/js/ajax/index.html">
+<meta property="og:site_name" content="tcbaby&#39;s blog">
+<meta property="og:description" content="ASynchronous JavaScript And XML  异步和同步：在客户端和服务器端相互通信的基础上 同步：客户端必须等待服务器端的响应。在等待的期间客户端不能做其他操作。 异步：客户端不需要等待服务器端的响应。在服务器处理请求的过程中，客户端可以进行其他的操作。   Ajax 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。 可以在不重新加载整个网页的情况下，对网页的某">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tcbaby.github.io/images/og_image.png">
+<meta property="article:published_time" content="2021-03-06T06:13:12.000Z">
+<meta property="article:modified_time" content="2022-03-22T07:23:36.236Z">
+<meta property="article:author" content="tcbaby">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="AJAX">
+<meta property="article:tag" content="CORS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tcbaby.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/hub.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/xcode.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/hub.png" alt="AJAX与跨域访问" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="My GitHub" href="https://www.github.com/tcbaby">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>AJAX与跨域访问
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-03-06T06:13:12.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2021-03-06</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2022-03-22T07:23:36.236Z"><i class="far fa-calendar-check">&nbsp;</i>2022-03-22</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/js/">js</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    15 分钟 读完 (大约 2179 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>ASynchronous JavaScript And XML</p>
+<ul>
+<li>异步和同步：在客户端和服务器端相互通信的基础上<ul>
+<li>同步：客户端必须等待服务器端的响应。在等待的期间客户端不能做其他操作。</li>
+<li>异步：客户端不需要等待服务器端的响应。在服务器处理请求的过程中，客户端可以进行其他的操作。</li>
+</ul>
+</li>
+<li><strong>Ajax 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。</strong><ul>
+<li>可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</li>
+</ul>
+</li>
+<li>传统的网页（不使用 Ajax）如果需要更新内容，必须重载整个网页页面。</li>
+<li>可以提升用户的体验</li>
+</ul>
+<a id="more"></a>
+
+
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>服务器响应的数据，在客户端要想当做json数据格式使用， 需要在服务端设置MIME类型 <code>content-type=application/json;charset=utf-8</code></p>
+<h3 id="js原生方式"><a href="#js原生方式" class="headerlink" title="js原生方式"></a>js原生方式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.创建核心对象</span></span><br><span class="line"><span class="keyword">var</span> xmlhttp;</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest)</span><br><span class="line">&#123;<span class="comment">// code for IE7+, Firefox, Chrome, Opera, Safari</span></span><br><span class="line">	xmlhttp=<span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;<span class="comment">// code for IE6, IE5</span></span><br><span class="line">	xmlhttp=<span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//2. 建立连接</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	open方法参数：</span></span><br><span class="line"><span class="comment">		1. 请求方式：GET、POST</span></span><br><span class="line"><span class="comment">			* get方式，请求参数在URL后边拼接。send方法为空参</span></span><br><span class="line"><span class="comment">			* post方式，请求参数在send方法中定义</span></span><br><span class="line"><span class="comment">		2. 请求的URL：</span></span><br><span class="line"><span class="comment">		3. 同步或异步请求：true（异步）或 false（同步）</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">xmlhttp.open(<span class="string">"GET"</span>,<span class="string">"ajaxServlet?username=tom"</span>,<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.发送请求</span></span><br><span class="line">xmlhttp.send();</span><br><span class="line">	</span><br><span class="line"><span class="comment">//4.接受并处理来自服务器的响应结果</span></span><br><span class="line"><span class="comment">//获取方式 ：xmlhttp.responseText</span></span><br><span class="line">	</span><br><span class="line"><span class="comment">//当xmlhttp对象的就绪状态改变时，触发事件onreadystatechange。</span></span><br><span class="line">xmlhttp.onreadystatechange=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//判断readyState就绪状态是否为4，判断status响应状态码是否为200</span></span><br><span class="line">	<span class="keyword">if</span> (xmlhttp.readyState==<span class="number">4</span> &amp;&amp; xmlhttp.status==<span class="number">200</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//获取服务器的响应结果</span></span><br><span class="line">		<span class="keyword">var</span> responseText = xmlhttp.responseText;</span><br><span class="line">		alert(responseText);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="JQeury方式"><a href="#JQeury方式" class="headerlink" title="JQeury方式"></a>JQeury方式</h3><ol>
+<li><p><code>$.ajax()</code></p>
+<ul>
+<li><p>语法：<code>$.ajax({键值对})</code>;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用$.ajax()发送异步请求</span></span><br><span class="line">$.ajax(&#123;</span><br><span class="line">	url:<span class="string">"ajaxServlet1111"</span> , <span class="comment">// 请求路径</span></span><br><span class="line">	type:<span class="string">"POST"</span> , <span class="comment">//请求方式</span></span><br><span class="line">	<span class="comment">//data: "username=jack&amp;age=23",//请求参数</span></span><br><span class="line">	data:&#123;<span class="string">"username"</span>:<span class="string">"jack"</span>,<span class="string">"age"</span>:<span class="number">23</span>&#125;,</span><br><span class="line">	success:<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">		alert(data);</span><br><span class="line">	&#125;,<span class="comment">//响应成功后的回调函数</span></span><br><span class="line">	error:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		alert(<span class="string">"出错啦..."</span>)</span><br><span class="line">&#125;,<span class="comment">//表示如果请求响应出现错误，会执行的回调函数</span></span><br><span class="line"></span><br><span class="line">	dataType:<span class="string">"text"</span><span class="comment">//设置接受到的响应数据的格式</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><code>$.get()</code>：发送get请求</p>
+<ul>
+<li>语法：<code>$.get(url, [data], [callback], [type])</code><ul>
+<li>url：请求路径</li>
+<li>data：请求参数</li>
+<li>callback：回调函数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>type：响应结果的类型</li>
+</ul>
+<ol start="3">
+<li><code>$.post()</code>：发送post请求<ul>
+<li>语法：<code>$.post(url, [data], [callback], [type])</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="fetch发送异步请求"><a href="#fetch发送异步请求" class="headerlink" title="fetch发送异步请求"></a>fetch发送异步请求</h3><p><strong>常用配置选项</strong></p>
+<ul>
+<li>method(String)</li>
+<li>body(String)</li>
+<li>headers(Object)</li>
+</ul>
+<p><strong>示例</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">"http://localhost/products"</span>, &#123;<span class="attr">method</span>: <span class="string">"GET"</span>&#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">data</span> =&gt;</span> data.text())          <span class="comment">// data.text()返回的是一个Promise对象</span></span><br><span class="line">    .then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.log(data));   <span class="comment">// 这时拿到的data才是响应数据</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="axios发送异步请求"><a href="#axios发送异步请求" class="headerlink" title="axios发送异步请求"></a>axios发送异步请求</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 请求拦截器， 在请求发出前设置一些信息</span></span><br><span class="line">axios.interceptors.request.use(<span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(config);</span><br><span class="line">    config.headers.mytoken = <span class="string">"hello"</span>;</span><br><span class="line">&#125;,error =&gt; <span class="built_in">console</span>.log(error))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 响应拦截器， 在获取数据前做一些处理</span></span><br><span class="line">axios.interceptors.response.use(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res),</span><br><span class="line">    error =&gt; <span class="built_in">console</span>.log(error))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送get请求</span></span><br><span class="line">axios.get(<span class="string">"http://localhost/products"</span>)</span><br><span class="line">    .then(<span class="function"><span class="params">resp</span> =&gt;</span> <span class="built_in">console</span>.log(resp.data))</span><br><span class="line">    .catch(<span class="function"><span class="params">error</span> =&gt;</span> <span class="built_in">console</span>.log(error));</span><br></pre></td></tr></table></figure>
+
+<h2 id="同源政策"><a href="#同源政策" class="headerlink" title="同源政策"></a>同源政策</h2><p>如果两个页面拥有相同的<strong>协议</strong>（http/https）、<strong>域名</strong>和<strong>端口</strong>，那么这两个页面就属于统一个源。</p>
+<p>同源政策的目的就是为了保证用户信息的安全。</p>
+<p><strong>同源限制</strong>  </p>
+<ul>
+<li>A网站在客户端设置的Cookie，B网站不能访问</li>
+<li>向非同源的地址发送ajax请求，<strong>浏览器会拒绝接收</strong>（但能发送请求）。</li>
+</ul>
+<h3 id="Jsonp"><a href="#Jsonp" class="headerlink" title="Jsonp"></a>Jsonp</h3><p>json with padding， <strong>不属于ajax请求，但可以模拟ajax请求</strong>，解决同源限制问题。</p>
+<p><strong>实现步骤</strong></p>
+<ol>
+<li>将不同源的请求地址写道script标签的src属性中，并设置请求参数callbak</li>
+<li>服务器端响应一个函数调用的字符串，让客户端调用。</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"findAll()"</span>&gt;</span>查看所有商品<span class="tag">&lt;/<span class="name">button</span>&gt;</span> </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 封装jsonp操作</span></span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">jsonp</span><span class="params">(options)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 创建script标签</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">        <span class="comment">// 将临时的success函数挂载到window对象上</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> functionName = <span class="string">"jsonp"</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().getMilliseconds();</span></span><br><span class="line"><span class="javascript">        <span class="built_in">window</span>[functionName] = options.success;</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">        <span class="comment">// 将success函数名，通过参数传递给服务器；</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 服务器收到后，返回一个调用该函数的字符串代码给客户端执行</span></span></span><br><span class="line"><span class="javascript">        script.src = <span class="string">`<span class="subst">$&#123;options.url&#125;</span>?callback=<span class="subst">$&#123;functionName&#125;</span>`</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.body.appendChild(script);  <span class="comment">// 向dom中添加script标签</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.body.removeChild(script);  <span class="comment">// 在dom中删除script标签</span></span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">findAll</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line">        jsonp(&#123;</span><br><span class="line"><span class="actionscript">            url: <span class="string">"http://localhost/product/findAll"</span>,</span></span><br><span class="line"><span class="actionscript">            success: <span class="function"><span class="keyword">function</span> <span class="params">(data)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">                alert(<span class="built_in">JSON</span>.stringify(data));</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="CORS跨域资源共享"><a href="#CORS跨域资源共享" class="headerlink" title="CORS跨域资源共享"></a>CORS跨域资源共享</h3><p>优质博文： <a href="https://www.ruanyifeng.com/blog/2016/04/cors.html">https://www.ruanyifeng.com/blog/2016/04/cors.html</a> </p>
+<p>Cross-origin resource sharing， 允许浏览器向跨域服务器发送Ajax请求。</p>
+<p> CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能 。整个CORS通信过程，都是浏览器自动完成，不需要用户参与。 <strong>因此，实现CORS通信的关键是服务器。</strong> </p>
+<p><img src="/img/cors.png" alt=""></p>
+<p><strong>简单请求</strong></p>
+<ul>
+<li>请求方法是一下三者之一：HEAD、GET、POST</li>
+<li>HTTP头不能超过一下几种字段：<ul>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Last-Event-ID</li>
+<li>Content-Type：只限于三个值<ul>
+<li><code>application/x-www-form-urlencoded</code>、</li>
+<li><code>multipart/form-data</code>、</li>
+<li><code>text/plain</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>浏览器发现是简单请求的跨域访问时会携带origin头信息，服务器端如果允许来自这个源的请求，就会响应一个Access-Control-Allow-Origin头，则本次跨域请求会成功。</p>
+<p><strong>特殊请求</strong></p>
+<p>不符合简单请求的条件，会被浏览器判定为特殊请求。</p>
+<p>特殊请求会在正式通信之前，增加一次HTTP查询请求，称为”预检”请求（preflight）。</p>
+<p>浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息字段。只有得到肯定答复，浏览器才会发出正式的<code>XMLHttpRequest</code>请求，否则就报错。</p>
+<p>一个“预检”请求的样板：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">OPTIONS</span> <span class="string">/cors</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Origin</span>: http://manage.leyou.com</span><br><span class="line"><span class="attribute">Access-Control-Request-Method</span>: PUT</span><br><span class="line"><span class="attribute">Access-Control-Request-Headers</span>: X-Custom-Header</span><br><span class="line"><span class="attribute">Host</span>: api.leyou.com</span><br><span class="line"><span class="attribute">Accept-Language</span>: en-US</span><br><span class="line"><span class="attribute">Connection</span>: keep-alive</span><br><span class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0...</span><br></pre></td></tr></table></figure>
+
+<p>与简单请求相比，除了Origin以外，多了两个头：</p>
+<ul>
+<li>Access-Control-Request-Method：接下来会用到的请求方式，比如PUT</li>
+<li>Access-Control-Request-Headers：会额外用到的头信息</li>
+</ul>
+<p>服务的收到预检请求，如果许可跨域，会发出响应：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 <span class="number">200</span> OK</span><br><span class="line"><span class="attribute">Date</span>: Mon, 01 Dec 2008 01:15:39 GMT</span><br><span class="line"><span class="attribute">Server</span>: Apache/2.0.61 (Unix)</span><br><span class="line"><span class="attribute">Access-Control-Allow-Origin</span>: http://manage.leyou.com</span><br><span class="line"><span class="attribute">Access-Control-Allow-Credentials</span>: true</span><br><span class="line"><span class="attribute">Access-Control-Allow-Methods</span>: GET, POST, PUT</span><br><span class="line"><span class="attribute">Access-Control-Allow-Headers</span>: X-Custom-Header</span><br><span class="line"><span class="attribute">Access-Control-Max-Age</span>: 1728000</span><br><span class="line"><span class="attribute">Content-Type</span>: text/html; charset=utf-8</span><br><span class="line"><span class="attribute">Content-Encoding</span>: gzip</span><br><span class="line"><span class="attribute">Content-Length</span>: 0</span><br><span class="line"><span class="attribute">Keep-Alive</span>: timeout=2, max=100</span><br><span class="line"><span class="attribute">Connection</span>: Keep-Alive</span><br><span class="line"><span class="attribute">Content-Type</span>: text/plain</span><br></pre></td></tr></table></figure>
+
+<p>除了<code>Access-Control-Allow-Origin</code>和<code>Access-Control-Allow-Credentials</code>以外，这里又额外多出3个头：</p>
+<ul>
+<li>Access-Control-Allow-Methods：允许访问的方式</li>
+<li>Access-Control-Allow-Headers：允许携带的头</li>
+<li>Access-Control-Max-Age：本次许可的有效时长，单位是秒，<strong>过期之前的ajax请求就无需再次预检</strong></li>
+</ul>
+<p>如果浏览器得到上述响应，则认定为可以跨域，后续就跟简单请求的处理是一样的了。</p>
+<p><strong>服务器端设置响应头</strong></p>
+<ul>
+<li>Access-Control-Allow-Origin：设置允许的来源</li>
+<li>Access-Control-Allow-Method：设置允许的请求类型</li>
+<li>Access-Control-Allow-Headers：设置默认不能拿到的字段（ <code>XMLHttpRequest</code>对象的<code>getResponseHeader()</code>方法只能拿到6个基本字段 ）</li>
+</ul>
+<h3 id="解决方案3"><a href="#解决方案3" class="headerlink" title="解决方案3"></a>解决方案3</h3><p>由于同源政策时浏览器给Ajax的限制，服务器端是不存在同源政策限制的。</p>
+<p><img src="/img/cors2.png" alt=""></p>
+<h3 id="跨域访问携带Cookie"><a href="#跨域访问携带Cookie" class="headerlink" title="跨域访问携带Cookie"></a>跨域访问携带Cookie</h3><p>在使用Ajax发送跨域请求时，默认情况下不会携带Cookie信息</p>
+<p><strong>实现</strong></p>
+<ul>
+<li>客户端将XMLHttpRequest对象的withCredentials属性设置为ture，表示跨域请求时携带Cookie</li>
+<li>浏览器端设置<code>Access-Control-Allow-Credentials：true</code>， 表示允许客户端携带cookie</li>
+</ul>
+<h3 id="springmvc解决跨域问题"><a href="#springmvc解决跨域问题" class="headerlink" title="springmvc解决跨域问题"></a>springmvc解决跨域问题</h3><ul>
+<li><p>方法1：使用CorssOrign注解</p>
+</li>
+<li><p>方法2：注册一个CorsFilter</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.cors.CorsConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.cors.UrlBasedCorsConfigurationSource;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.filter.CorsFilter;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GlobalCorsConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CorsFilter <span class="title">corsFilter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1.添加CORS配置信息</span></span><br><span class="line">        CorsConfiguration config = <span class="keyword">new</span> CorsConfiguration();</span><br><span class="line">        <span class="comment">//1) 允许的域,不要写*，否则cookie就无法使用了</span></span><br><span class="line">        config.addAllowedOrigin(<span class="string">"http://manage.leyou.com"</span>);</span><br><span class="line">        <span class="comment">//2) 是否发送Cookie信息</span></span><br><span class="line">        config.setAllowCredentials(<span class="keyword">true</span>);</span><br><span class="line">        <span class="comment">//3) 允许的请求方式</span></span><br><span class="line">        config.addAllowedMethod(<span class="string">"OPTIONS"</span>);</span><br><span class="line">        config.addAllowedMethod(<span class="string">"HEAD"</span>);</span><br><span class="line">        config.addAllowedMethod(<span class="string">"GET"</span>);</span><br><span class="line">        config.addAllowedMethod(<span class="string">"PUT"</span>);</span><br><span class="line">        config.addAllowedMethod(<span class="string">"POST"</span>);</span><br><span class="line">        config.addAllowedMethod(<span class="string">"DELETE"</span>);</span><br><span class="line">        config.addAllowedMethod(<span class="string">"PATCH"</span>);</span><br><span class="line">        <span class="comment">// 4）允许的头信息</span></span><br><span class="line">        config.addAllowedHeader(<span class="string">"*"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.添加映射路径，我们拦截一切请求</span></span><br><span class="line">        UrlBasedCorsConfigurationSource configSource = <span class="keyword">new</span> UrlBasedCorsConfigurationSource();</span><br><span class="line">        configSource.registerCorsConfiguration(<span class="string">"/**"</span>, config);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.返回新的CorsFilter.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> CorsFilter(configSource);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://tcbaby.github.io/2021/03/06/js/ajax/">AJAX与跨域访问</a></li>
+            <li><strong>本文作者：</strong><a href="http://tcbaby.github.io">tcbaby</a></li>
+            <li><strong>本文链接：</strong><a href="http://tcbaby.github.io/2021/03/06/js/ajax/">http://tcbaby.github.io/2021/03/06/js/ajax/</a></li>
+            <li><strong>发布时间：</strong>2021-03-06</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/AJAX/" rel="tag">AJAX</a>,&nbsp;<a class="has-link-grey -link" href="/tags/CORS/" rel="tag">CORS</a>,&nbsp;<a class="has-link-grey -link" href="/tags/js/" rel="tag">js</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.png" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2021/03/29/database/es/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Elasticsearch</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2021/03/06/js/es6/">
+                <span class="level-item">ES6</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: '0MVesHWBYVPevIO52bj7lzha-gzGzoHsz',
+        app_key: 'vXNqehkuCjwju4w3eT6oYs97',
+        placeholder: 'Just Do It...'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-96x96 has-mb-6">
+                        <img class="" src="/images/hub.png" alt="tcbaby">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        tcbaby
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        cbtan@foxmail.com
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Chongqing, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        33
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        5
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        28
+                    </p>
+                </a>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/tcbaby" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content" style="max-height:calc(100vh - 22px);overflow:scroll">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><ul class="menu-list"><li>
+        <a class="is-flex" href="#注意事项">
+        <span class="has-mr-6">1.1</span>
+        <span>注意事项</span>
+        </a></li><li>
+        <a class="is-flex" href="#js原生方式">
+        <span class="has-mr-6">1.2</span>
+        <span>js原生方式</span>
+        </a></li><li>
+        <a class="is-flex" href="#JQeury方式">
+        <span class="has-mr-6">1.3</span>
+        <span>JQeury方式</span>
+        </a></li><li>
+        <a class="is-flex" href="#fetch发送异步请求">
+        <span class="has-mr-6">1.4</span>
+        <span>fetch发送异步请求</span>
+        </a></li><li>
+        <a class="is-flex" href="#axios发送异步请求">
+        <span class="has-mr-6">1.5</span>
+        <span>axios发送异步请求</span>
+        </a></li></ul><li>
+        <a class="is-flex" href="#同源政策">
+        <span class="has-mr-6">2</span>
+        <span>同源政策</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Jsonp">
+        <span class="has-mr-6">2.1</span>
+        <span>Jsonp</span>
+        </a></li><li>
+        <a class="is-flex" href="#CORS跨域资源共享">
+        <span class="has-mr-6">2.2</span>
+        <span>CORS跨域资源共享</span>
+        </a></li><li>
+        <a class="is-flex" href="#解决方案3">
+        <span class="has-mr-6">2.3</span>
+        <span>解决方案3</span>
+        </a></li><li>
+        <a class="is-flex" href="#跨域访问携带Cookie">
+        <span class="has-mr-6">2.4</span>
+        <span>跨域访问携带Cookie</span>
+        </a></li><li>
+        <a class="is-flex" href="#springmvc解决跨域问题">
+        <span class="has-mr-6">2.5</span>
+        <span>springmvc解决跨域问题</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/hub.png" alt="AJAX与跨域访问" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2022 tcbaby&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客&nbsp;
+                <span id="busuanzi_value_site_pv">0</span>次访问
+                </span>
+                
+                </p>
+            </div>
+            <!-- <div class="level-mid">
+                <span id="timeDate">载入天数...</span> &nbsp;
+                <span id="times">载入时分秒...</span>
+            </div> -->
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- <script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("4/29/2020 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站勉强运行了 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script> -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://tcbaby.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
